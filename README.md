@@ -71,7 +71,7 @@ All pages are reachable from every other page via the main navigation menu and t
 
 
 
-##
+## PART 2 DETAILS
 ## Key Features and Functionality
 
 ### The Pages
