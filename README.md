@@ -48,8 +48,30 @@ This is a three-part assignment, built step by step:
 **More donations** – tracked by counting new monthly donors; target: 30+ new donors per month
 **Better visibility** – tracked via Google Search Console impressions; target: 500+ impressions per month
 
+## Part 1 Details
+
+Part 1 covered the planning phase: the website project proposal, defining the scope and goals, researching and sourcing content, and creating the sitemap. Part 2 and Part 3 details will follow in future submissions/edits as those phases are completed.
 
 
+
+## Sitemap
+
+- **Home** (`index.html`)
+  - Links to: About, Services, Volunteer, Contact
+- **About** (`about.html`)
+  - Our Story, Mission & Vision, Values, Team, Impact, Testimonials
+- **Services / Get Help** (`services.html`)
+  - Eligibility, Distribution Schedule, Locations, FAQ
+- **Volunteer** (`enquiry.html`)
+  - Volunteer Roles, Testimonials, Sign-Up Form
+- **Contact** (`contact.html`)
+  - Contact Details, Enquiry Form, Interactive Map, Locations, Social Links
+
+All pages are reachable from every other page via the main navigation menu and the footer quick links.
+
+
+
+##
 ## Key Features and Functionality
 
 ### The Pages
@@ -125,28 +147,6 @@ haven-site/
 - **Part 2 (Done)** – HTML structure and CSS styling for all 5 pages
 - **Part 3 (In Progress)** – JavaScript: mobile navigation, interactive map, and form validation are done; still to come: any remaining dynamic features
 
-
-
-## Part 1 Details
-
-Part 1 covered the planning phase: the website project proposal, defining the scope and goals, researching and sourcing content, and creating the sitemap. Part 2 and Part 3 details will follow in future submissions/edits as those phases are completed.
-
-
-
-## Sitemap
-
-- **Home** (`index.html`)
-  - Links to: About, Services, Volunteer, Contact
-- **About** (`about.html`)
-  - Our Story, Mission & Vision, Values, Team, Impact, Testimonials
-- **Services / Get Help** (`services.html`)
-  - Eligibility, Distribution Schedule, Locations, FAQ
-- **Volunteer** (`enquiry.html`)
-  - Volunteer Roles, Testimonials, Sign-Up Form
-- **Contact** (`contact.html`)
-  - Contact Details, Enquiry Form, Interactive Map, Locations, Social Links
-
-All pages are reachable from every other page via the main navigation menu and the footer quick links.
 
 
 
