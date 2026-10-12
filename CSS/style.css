@@ -1,6 +1,11 @@
 /* ==========================================================================
    HAVEN COMMUNITY FOOD BANK — MAIN STYLESHEET (v2)
-
+   Palette: warm coral-red (energy/action) + deep indigo (trust/dignity) +
+   soft lavender (hope) on a clean near-white base — a distinct, modern
+   nonprofit look, moved away from both the original navy/turquoise and
+   the earlier terracotta/green/gold iteration.
+   Layout: modernized with a bento-style grid rhythm, glass header,
+   pill buttons, soft large radii, gradient accents, fluid type scale.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -139,8 +144,10 @@ select:focus-visible {
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     padding: 15px 32px;
+    min-height: 44px;
     border-radius: var(--radius-pill);
     font-family: var(--font-heading);
     font-weight: 700;
@@ -148,10 +155,18 @@ select:focus-visible {
     letter-spacing: 0.01em;
     border: 2px solid transparent;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition), color var(--transition);
 }
-.btn:hover { transform: translateY(-3px); }
 .btn:active { transform: translateY(0) scale(0.97); }
+
+/* Only apply hover lift on devices that actually have hover (mouse/trackpad).
+   Without this guard, touch devices "fake" :hover on tap and the button can
+   look stuck/unresponsive until the user taps elsewhere. */
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover { transform: translateY(-3px); }
+}
 
 .btn-primary {
     background: var(--gradient-primary);
@@ -272,11 +287,17 @@ nav a.active {
 
 .menu-toggle {
     display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     color: var(--color-white);
     font-size: 1.4rem;
     cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* --------------------------------------------------------------------------
@@ -1250,6 +1271,34 @@ footer {
 #backToTop:active { transform: translateY(-1px) scale(0.95); }
 
 /* --------------------------------------------------------------------------
+   27e. DISABLE HOVER-LIFT EFFECTS ON TOUCH DEVICES
+   A touch screen "fakes" :hover the moment you tap, so every card/button
+   with a translateY hover lift can look like it's stuck mid-animation
+   until you tap somewhere else — this is the main cause of buttons
+   feeling unresponsive on mobile. :active below still gives instant tap
+   feedback, so this only removes the lift, not the response.
+   -------------------------------------------------------------------------- */
+@media (hover: none), (pointer: coarse) {
+    .stat-card:hover,
+    .value-card:hover,
+    .event-card:hover,
+    .timeline-item:hover,
+    .partner-item:hover,
+    .news-list li:hover,
+    .contact-item:hover,
+    .location-card:hover,
+    .role-card:hover,
+    .team-member:hover,
+    .btn-donate:hover,
+    #backToTop:hover,
+    .social-icons a:hover,
+    .social-links a:hover,
+    nav a:hover {
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
    28. RESPONSIVE — TABLET (≤ 1024px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
@@ -1267,6 +1316,11 @@ footer {
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     main section { padding: var(--space-xl) 0; }
+
+    /* background-attachment: fixed breaks/flickers on iOS Safari and many
+       Android browsers; the hero's inline style sets it, so override it
+       back to normal scrolling on mobile where it actually matters. */
+    .hero { background-attachment: scroll !important; }
 
     nav { display: none; }
     nav.nav-open {
@@ -1286,7 +1340,7 @@ footer {
         gap: 4px;
     }
     nav.nav-open a { display: block; padding: 12px 16px; }
-    .menu-toggle { display: block; }
+    .menu-toggle { display: flex; }
     #backToTop { bottom: 20px; right: 20px; width: 44px; height: 44px; }
 
     .header-actions .btn-donate span { display: none; }
@@ -1321,4 +1375,12 @@ footer {
     .page-header { padding: 110px 0 60px; }
     .news-list li { flex-direction: column; gap: 10px; }
     .news-date { width: fit-content; }
+
+    /* Logo + Donate button + menu icon were crowding/squeezing on narrow
+       phones; trim the sub-label and tighten spacing so nothing wraps
+       or overlaps and the buttons stay easy to tap. */
+    header .container { padding-top: 12px; padding-bottom: 12px; }
+    .logo-sub { display: none; }
+    .header-actions { gap: 10px; }
+    .btn-donate { padding: 10px 14px; }
 }

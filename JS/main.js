@@ -1,5 +1,10 @@
 /* ==========================================================================
    HAVEN COMMUNITY FOOD BANK — MAIN SCRIPT
+   Handles: mobile navigation, interactive Leaflet map (contact page),
+   form validation + submit feedback, newsletter signup, back-to-top.
+   No backend exists yet, so "submission" is simulated client-side with a
+   clear success message — swap the TODO in handleFormSubmit() for a real
+   fetch() call once a backend/endpoint is available.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {

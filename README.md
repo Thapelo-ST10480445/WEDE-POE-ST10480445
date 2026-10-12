@@ -48,30 +48,8 @@ This is a three-part assignment, built step by step:
 **More donations** – tracked by counting new monthly donors; target: 30+ new donors per month
 **Better visibility** – tracked via Google Search Console impressions; target: 500+ impressions per month
 
-## Part 1 Details
-
-Part 1 covered the planning phase: the website project proposal, defining the scope and goals, researching and sourcing content, and creating the sitemap. Part 2 and Part 3 details will follow in future submissions/edits as those phases are completed.
 
 
-
-## Sitemap
-
-- **Home** (`index.html`)
-  - Links to: About, Services, Volunteer, Contact
-- **About** (`about.html`)
-  - Our Story, Mission & Vision, Values, Team, Impact, Testimonials
-- **Services / Get Help** (`services.html`)
-  - Eligibility, Distribution Schedule, Locations, FAQ
-- **Volunteer** (`enquiry.html`)
-  - Volunteer Roles, Testimonials, Sign-Up Form
-- **Contact** (`contact.html`)
-  - Contact Details, Enquiry Form, Interactive Map, Locations, Social Links
-
-All pages are reachable from every other page via the main navigation menu and the footer quick links.
-
-
-
-## PART 2 DETAILS
 ## Key Features and Functionality
 
 ### The Pages
@@ -149,6 +127,28 @@ haven-site/
 
 
 
+## Part 1 Details
+
+Part 1 covered the planning phase: the website project proposal, defining the scope and goals, researching and sourcing content, and creating the sitemap. Part 2 and Part 3 details will follow in future submissions/edits as those phases are completed.
+
+
+
+## Sitemap
+
+- **Home** (`index.html`)
+  - Links to: About, Services, Volunteer, Contact
+- **About** (`about.html`)
+  - Our Story, Mission & Vision, Values, Team, Impact, Testimonials
+- **Services / Get Help** (`services.html`)
+  - Eligibility, Distribution Schedule, Locations, FAQ
+- **Volunteer** (`enquiry.html`)
+  - Volunteer Roles, Testimonials, Sign-Up Form
+- **Contact** (`contact.html`)
+  - Contact Details, Enquiry Form, Interactive Map, Locations, Social Links
+
+All pages are reachable from every other page via the main navigation menu and the footer quick links.
+
+
 
 ## Changelog
 
@@ -169,6 +169,13 @@ haven-site/
   - Back-to-top button
 - **18 September 2026** – Replaced the placeholder address (`123 Main Rd, Philippi, 7785`) across all five pages, the footer, the map data, and the directions links with a realistic Philippi address: `24 Old Lansdowne Road, Philippi, 7781`
 - **18 September 2026** – Fixed a `403 Access blocked` error from the interactive map: the raw OpenStreetMap tile servers (`tile.openstreetmap.org`) actively reject traffic that doesn't meet their tile usage policy. Switched the Leaflet tile layer to CARTO's free basemap tiles, which permit this kind of use without an API key
+- **12 October 2026** – Fixed mobile responsiveness and button/touch issues in `css/style.css`:
+  - Enlarged the hamburger menu button to a proper 44×44px tap target (it was icon-sized and easy to miss on a phone)
+  - Stopped hover-lift animations (cards, nav links, Donate button, back-to-top) from getting visually "stuck" on tap — touch screens simulate `:hover` on tap, so these now only trigger on devices with a real mouse/trackpad (`@media (hover: hover) and (pointer: fine)`); `:active` still gives instant tap feedback everywhere
+  - Fixed the hero's `background-attachment: fixed`, which breaks/flickers on iOS Safari and many Android browsers, by switching it to `scroll` under 768px
+  - Tightened the header layout at very small phone widths (≤480px) so the logo, Donate button, and menu icon no longer crowd each other
+  - Added `touch-action: manipulation` to buttons to remove the ~300ms tap delay some mobile browsers add
+- **12 October 2026** – Replaced the logo on all five pages: the old navy/turquoise badge had three lines of text ("H" / "FOOD" / "BANK") crammed into a 42px icon that was unreadable at that size. New logo is a rounded-square badge in the site's indigo gradient with a simple coral heart resting in a white bowl — reads clearly at header size and matches the current colour palette
 - *(Further changes will be logged here as Part 3 progresses)*
 
 
@@ -180,3 +187,6 @@ haven-site/
 - Pexels. (2024). *Free Stock Photos*. Available at: https://www.pexels.com/ [Accessed 14 August 2026].
 - Mozilla Developer Network. (2024). *HTML: HyperText Markup Language*. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML [Accessed 14 August 2026].
 - Mozilla Developer Network. (2024). *CSS: Cascading Style Sheets*. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS [Accessed 14 August 2026].
+- Leaflet. (2024). *Leaflet – an open-source JavaScript library for interactive maps*. Available at: https://leafletjs.com/ [Accessed 18 September 2026].
+- CARTO. (2024). *Basemaps*. Available at: https://carto.com/basemaps [Accessed 18 September 2026].
+- OpenStreetMap Foundation. (2024). *Tile Usage Policy*. Available at: https://operations.osmfoundation.org/policies/tiles/ [Accessed 18 September 2026].
