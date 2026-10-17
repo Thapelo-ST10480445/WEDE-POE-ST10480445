@@ -111,8 +111,17 @@
                     <h2>Distribution Schedule</h2>
                     <p>Food parcels and hot meals are distributed on a rotating schedule across our three locations.</p>
                 </div>
+                <div class="schedule-filter" id="scheduleFilter" role="group" aria-label="Filter schedule by day">
+                    <button type="button" class="filter-btn active" data-day="all">All Days</button>
+                    <button type="button" class="filter-btn" data-day="Mon">Mon</button>
+                    <button type="button" class="filter-btn" data-day="Tue">Tue</button>
+                    <button type="button" class="filter-btn" data-day="Wed">Wed</button>
+                    <button type="button" class="filter-btn" data-day="Thu">Thu</button>
+                    <button type="button" class="filter-btn" data-day="Fri">Fri</button>
+                    <button type="button" class="filter-btn" data-day="Sat">Sat</button>
+                </div>
                 <div style="overflow-x:auto;">
-                    <table class="schedule-table">
+                    <table class="schedule-table" id="scheduleTable">
                         <thead>
                             <tr>
                                 <th>Location</th>
@@ -122,19 +131,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-days="Mon,Wed,Sat">
                                 <td>Philippi Hub</td>
                                 <td>Mon, Wed, Sat</td>
                                 <td>10am – 2pm</td>
                                 <td>123 Main Rd, Philippi, 7785</td>
                             </tr>
-                            <tr>
+                            <tr data-days="Tue,Fri">
                                 <td>Khayelitsha Satellite</td>
                                 <td>Tue, Fri</td>
                                 <td>11am – 3pm</td>
                                 <td>45 Mandela Ave, Khayelitsha, 7784</td>
                             </tr>
-                            <tr>
+                            <tr data-days="Wed,Thu">
                                 <td>Mitchells Plain Satellite</td>
                                 <td>Wed, Thu</td>
                                 <td>9am – 1pm</td>
@@ -142,6 +151,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p id="scheduleEmpty" class="form-note" style="display:none;">No distribution points are open on this day — check another day above.</p>
                 </div>
             </div>
         </section>
@@ -189,26 +199,59 @@
                     <span class="section-tag">Questions</span>
                     <h2>Frequently Asked Questions</h2>
                 </div>
-                <div class="faq-item">
-                    <h3>Do I need to book in advance?</h3>
-                    <p>No booking is needed. Simply arrive at any distribution point during its open hours — see the schedule above.</p>
+                <div class="faq-search">
+                    <label for="faqSearch" class="sr-only">Search frequently asked questions</label>
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="faqSearch" placeholder="Search FAQs — try &quot;ID&quot; or &quot;book&quot;...">
                 </div>
-                <div class="faq-item">
-                    <h3>How often can I collect a food parcel?</h3>
-                    <p>Households can collect one parcel per week from any single location during that location's open days.</p>
+                <div id="faqItems">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Do I need to book in advance?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No booking is needed. Simply arrive at any distribution point during its open hours — see the schedule above.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>How often can I collect a food parcel?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Households can collect one parcel per week from any single location during that location's open days.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>What should I bring?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Please bring your ID (or the collecting household member's ID) and, if you have it, a proof of address. We'll help even without paperwork — just ask a volunteer.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Can I collect on behalf of someone else?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. Bring your own ID along with the name of the household you're collecting for, and our team will assist you.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Is there support beyond food parcels?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our Philippi hub also serves hot meals and can connect you with partner organisations for additional social support.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h3>What should I bring?</h3>
-                    <p>Please bring your ID (or the collecting household member's ID) and, if you have it, a proof of address. We'll help even without paperwork — just ask a volunteer.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Can I collect on behalf of someone else?</h3>
-                    <p>Yes. Bring your own ID along with the name of the household you're collecting for, and our team will assist you.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is there support beyond food parcels?</h3>
-                    <p>Our Philippi hub also serves hot meals and can connect you with partner organisations for additional social support.</p>
-                </div>
+                <p id="faqEmpty" class="form-note" style="display:none;">No questions match your search — try a different word.</p>
             </div>
         </section>
 

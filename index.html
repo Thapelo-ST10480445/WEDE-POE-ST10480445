@@ -8,9 +8,45 @@
     <meta name="author" content="Haven Community Food Bank">
     <title>Haven Community Food Bank - Home</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍲</text></svg>">
+    <link rel="canonical" href="https://haven-foodbank.netlify.app/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Haven Community Food Bank - Home">
+    <meta property="og:description" content="Haven Community Food Bank - Nourishing our neighbours since 2015. Serving Cape Town communities with dignity and compassion.">
+    <meta property="og:image" content="https://images.pexels.com/photos/6646878/pexels-photo-6646878.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    <meta property="og:url" content="https://haven-foodbank.netlify.app/index.html">
+    <meta property="og:site_name" content="Haven Community Food Bank">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Haven Community Food Bank - Home">
+    <meta name="twitter:description" content="Haven Community Food Bank - Nourishing our neighbours since 2015. Serving Cape Town communities with dignity and compassion.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/6646878/pexels-photo-6646878.jpeg?auto=compress&cs=tinysrgb&w=1200">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "Haven Community Food Bank",
+        "url": "https://haven-foodbank.netlify.app/index.html",
+        "logo": "https://haven-foodbank.netlify.app/favicon.svg",
+        "description": "Haven Community Food Bank is a registered non-profit organisation serving Cape Town communities with food parcels, hot meals, and holistic support since 2015.",
+        "foundingDate": "2015",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main Rd",
+            "addressLocality": "Philippi, Cape Town",
+            "postalCode": "7785",
+            "addressCountry": "ZA"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+27-21-123-4567",
+            "email": "info@havenfoodbank.org",
+            "contactType": "customer service"
+        },
+        "sameAs": []
+    }
+    </script>
 </head>
 <body>
 
@@ -247,29 +283,34 @@
                     <h2>Latest <span class="highlight">News</span></h2>
                     <p>Stay informed about our work and community initiatives.</p>
                 </div>
-                <ul class="news-list">
-                    <li>
-                        <span class="news-date">August 2026</span>
-                        <div class="news-content">
-                            <h4>New Distribution Point Opening</h4>
-                            <p>We're excited to announce a new distribution point opening in Strandfontein, serving the community every Saturday.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="news-date">July 2026</span>
-                        <div class="news-content">
-                            <h4>Winter Coat Drive</h4>
-                            <p>Drop off warm clothing at any of our distribution locations to help keep our community warm this winter.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="news-date">June 2026</span>
-                        <div class="news-content">
-                            <h4>Celebrating Our Volunteers</h4>
-                            <p>Thank you to our 50+ volunteers for their incredible dedication this past year. We couldn't do it without you!</p>
-                        </div>
-                    </li>
+                <ul class="news-list" id="newsList">
+                    <!-- Rendered dynamically by js/main.js from the newsItems data array. -->
                 </ul>
+                <noscript>
+                    <ul class="news-list">
+                        <li>
+                            <span class="news-date">August 2026</span>
+                            <div class="news-content">
+                                <h4>New Distribution Point Opening</h4>
+                                <p>We're excited to announce a new distribution point opening in Strandfontein, serving the community every Saturday.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="news-date">July 2026</span>
+                            <div class="news-content">
+                                <h4>Winter Coat Drive</h4>
+                                <p>Drop off warm clothing at any of our distribution locations to help keep our community warm this winter.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="news-date">June 2026</span>
+                            <div class="news-content">
+                                <h4>Celebrating Our Volunteers</h4>
+                                <p>Thank you to our 50+ volunteers for their incredible dedication this past year. We couldn't do it without you!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </noscript>
             </div>
         </section>
 

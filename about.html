@@ -213,6 +213,37 @@
             </div>
         </section>
 
+        <!-- GALLERY -->
+        <section class="gallery">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">In Pictures</span>
+                    <h2>Our Work in the Community</h2>
+                    <p>A look at Haven in action — click any photo to see it larger.</p>
+                </div>
+                <div class="gallery-grid" id="galleryGrid">
+                    <button type="button" class="gallery-item" data-full="https://images.pexels.com/photos/6646878/pexels-photo-6646878.jpeg?auto=compress&cs=tinysrgb&w=1200" data-caption="Volunteers packing food parcels ahead of a distribution day">
+                        <img src="https://images.pexels.com/photos/6646878/pexels-photo-6646878.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Volunteers packing food parcels ahead of a distribution day" loading="lazy">
+                    </button>
+                    <button type="button" class="gallery-item" data-full="https://images.pexels.com/photos/6647037/pexels-photo-6647037.jpeg?auto=compress&cs=tinysrgb&w=1200" data-caption="Community members collecting food assistance at our Philippi hub">
+                        <img src="https://images.pexels.com/photos/6647037/pexels-photo-6647037.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Community members collecting food assistance at our Philippi hub" loading="lazy">
+                    </button>
+                    <button type="button" class="gallery-item" data-full="https://images.pexels.com/photos/6646864/pexels-photo-6646864.jpeg?auto=compress&cs=tinysrgb&w=1200" data-caption="The Haven team planning an upcoming distribution day">
+                        <img src="https://images.pexels.com/photos/6646864/pexels-photo-6646864.jpeg?auto=compress&cs=tinysrgb&w=400" alt="The Haven team planning an upcoming distribution day" loading="lazy">
+                    </button>
+                    <button type="button" class="gallery-item" data-full="https://images.pexels.com/photos/6646865/pexels-photo-6646865.jpeg?auto=compress&cs=tinysrgb&w=1200" data-caption="New volunteers signing up to help at a Haven site">
+                        <img src="https://images.pexels.com/photos/6646865/pexels-photo-6646865.jpeg?auto=compress&cs=tinysrgb&w=400" alt="New volunteers signing up to help at a Haven site" loading="lazy">
+                    </button>
+                    <button type="button" class="gallery-item" data-full="https://images.pexels.com/photos/6646962/pexels-photo-6646962.jpeg?auto=compress&cs=tinysrgb&w=1200" data-caption="A family visiting one of our distribution points">
+                        <img src="https://images.pexels.com/photos/6646962/pexels-photo-6646962.jpeg?auto=compress&cs=tinysrgb&w=400" alt="A family visiting one of our distribution points" loading="lazy">
+                    </button>
+                    <button type="button" class="gallery-item" data-full="https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=1200" data-caption="A long-time volunteer sharing her story with the team">
+                        <img src="https://images.pexels.com/photos/6995247/pexels-photo-6995247.jpeg?auto=compress&cs=tinysrgb&w=400" alt="A long-time volunteer sharing her story with the team" loading="lazy">
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- TESTIMONIALS -->
         <section class="testimonials">
             <div class="container">
@@ -287,6 +318,17 @@
     </footer>
 
     <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- LIGHTBOX (for the Gallery section) -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Enlarged photo viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged photo"><i class="fas fa-times"></i></button>
+        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+        <figure class="lightbox-figure">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+            <figcaption class="lightbox-caption" id="lightboxCaption"></figcaption>
+        </figure>
+        <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
