@@ -7,7 +7,18 @@
     <meta name="keywords" content="food assistance, food parcels, Cape Town, food bank, distribution schedule">
     <meta name="author" content="Haven Community Food Bank">
     <title>Haven Community Food Bank - Get Help</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍲</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"><text y='.9em' font-size='90'>🍲</text></svg>">
+    <link rel="canonical" href="https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/services.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Haven Community Food Bank - Get Help">
+    <meta property="og:description" content="Get food assistance from Haven Community Food Bank. Find distribution times, locations, and eligibility information.">
+    <meta property="og:image" content="https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    <meta property="og:url" content="https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/services.html">
+    <meta property="og:site_name" content="Haven Community Food Bank">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Haven Community Food Bank - Get Help">
+    <meta name="twitter:description" content="Get food assistance from Haven Community Food Bank. Find distribution times, locations, and eligibility information.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg?auto=compress&cs=tinysrgb&w=1200">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -63,7 +74,8 @@
     <main>
 
         <!-- PAGE HEADER -->
-        <section class="page-header" style="background: linear-gradient(rgba(27,26,46,0.7), rgba(46,43,95,0.82)), url('https://images.pexels.com/photos/6647037/pexels-photo-6647037.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;">
+        <section class="page-header">
+            <div class="page-header-bg" style="background: linear-gradient(rgba(27,26,46,0.7), rgba(46,43,95,0.82)), url('https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;"></div>
             <div class="container">
                 <h1>Get Help</h1>
                 <p>Food assistance is available to anyone who needs it — no judgement, just support</p>
@@ -111,8 +123,17 @@
                     <h2>Distribution Schedule</h2>
                     <p>Food parcels and hot meals are distributed on a rotating schedule across our three locations.</p>
                 </div>
+                <div class="schedule-filter" id="scheduleFilter" role="group" aria-label="Filter schedule by day">
+                    <button type="button" class="filter-btn active" data-day="all">All Days</button>
+                    <button type="button" class="filter-btn" data-day="Mon">Mon</button>
+                    <button type="button" class="filter-btn" data-day="Tue">Tue</button>
+                    <button type="button" class="filter-btn" data-day="Wed">Wed</button>
+                    <button type="button" class="filter-btn" data-day="Thu">Thu</button>
+                    <button type="button" class="filter-btn" data-day="Fri">Fri</button>
+                    <button type="button" class="filter-btn" data-day="Sat">Sat</button>
+                </div>
                 <div style="overflow-x:auto;">
-                    <table class="schedule-table">
+                    <table class="schedule-table" id="scheduleTable">
                         <thead>
                             <tr>
                                 <th>Location</th>
@@ -122,19 +143,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr data-days="Mon,Wed,Sat">
                                 <td>Philippi Hub</td>
                                 <td>Mon, Wed, Sat</td>
                                 <td>10am – 2pm</td>
                                 <td>123 Main Rd, Philippi, 7785</td>
                             </tr>
-                            <tr>
+                            <tr data-days="Tue,Fri">
                                 <td>Khayelitsha Satellite</td>
                                 <td>Tue, Fri</td>
                                 <td>11am – 3pm</td>
                                 <td>45 Mandela Ave, Khayelitsha, 7784</td>
                             </tr>
-                            <tr>
+                            <tr data-days="Wed,Thu">
                                 <td>Mitchells Plain Satellite</td>
                                 <td>Wed, Thu</td>
                                 <td>9am – 1pm</td>
@@ -142,6 +163,34 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p id="scheduleEmpty" class="form-note" style="display:none;">No distribution points are open on this day — check another day above.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW A DISTRIBUTION DAY WORKS -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">What to Expect</span>
+                    <h2>How a Distribution Day <span class="highlight">Works</span></h2>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-photo"><img src="https://images.pexels.com/photos/6646952/pexels-photo-6646952.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Arrive and Check In" loading="lazy"><span class="step-number">1</span></div>
+                        <h3>Arrive and Check In</h3>
+                        <p>Bring your ID and proof of address. A friendly volunteer will welcome you and note your household size.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-photo"><img src="https://images.pexels.com/photos/6646871/pexels-photo-6646871.jpeg?auto=compress&cs=tinysrgb&w=600" alt="We Pack Your Parcel" loading="lazy"><span class="step-number">2</span></div>
+                        <h3>We Pack Your Parcel</h3>
+                        <p>Volunteers pack a parcel of staples, tinned goods and fresh produce suited to your household.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-photo"><img src="https://images.pexels.com/photos/6895226/pexels-photo-6895226.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Collect and Go Home" loading="lazy"><span class="step-number">3</span></div>
+                        <h3>Collect and Go Home</h3>
+                        <p>Pick up your parcel, ask us about other support, and head home with food for the week.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -189,26 +238,59 @@
                     <span class="section-tag">Questions</span>
                     <h2>Frequently Asked Questions</h2>
                 </div>
-                <div class="faq-item">
-                    <h3>Do I need to book in advance?</h3>
-                    <p>No booking is needed. Simply arrive at any distribution point during its open hours — see the schedule above.</p>
+                <div class="faq-search">
+                    <label for="faqSearch" class="sr-only">Search frequently asked questions</label>
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="faqSearch" placeholder="Search FAQs — try &quot;ID&quot; or &quot;book&quot;...">
                 </div>
-                <div class="faq-item">
-                    <h3>How often can I collect a food parcel?</h3>
-                    <p>Households can collect one parcel per week from any single location during that location's open days.</p>
+                <div id="faqItems">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Do I need to book in advance?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No booking is needed. Simply arrive at any distribution point during its open hours — see the schedule above.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>How often can I collect a food parcel?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Households can collect one parcel per week from any single location during that location's open days.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>What should I bring?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Please bring your ID (or the collecting household member's ID) and, if you have it, a proof of address. We'll help even without paperwork — just ask a volunteer.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Can I collect on behalf of someone else?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. Bring your own ID along with the name of the household you're collecting for, and our team will assist you.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Is there support beyond food parcels?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Our Philippi hub also serves hot meals and can connect you with partner organisations for additional social support.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <h3>What should I bring?</h3>
-                    <p>Please bring your ID (or the collecting household member's ID) and, if you have it, a proof of address. We'll help even without paperwork — just ask a volunteer.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Can I collect on behalf of someone else?</h3>
-                    <p>Yes. Bring your own ID along with the name of the household you're collecting for, and our team will assist you.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>Is there support beyond food parcels?</h3>
-                    <p>Our Philippi hub also serves hot meals and can connect you with partner organisations for additional social support.</p>
-                </div>
+                <p id="faqEmpty" class="form-note" style="display:none;">No questions match your search — try a different word.</p>
             </div>
         </section>
 

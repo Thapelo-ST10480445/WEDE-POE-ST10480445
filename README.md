@@ -9,7 +9,7 @@
 **Subject:** Web Development (WEDE5020)
 **Programme:** Diploma in Information Technology – Software Development
 **Group:** 4
-**Date:** 14 August 2026 (last updated 18 September 2026)
+**Date:** 14 August 2026 (last updated 17 October 2026)
 
 ---
 
@@ -29,7 +29,7 @@ This is a three-part assignment, built step by step:
 
 **Part 1 – Planning:** proposals, design, sitemap. *Status: Done*
 **Part 2 – Build:** the HTML and CSS (structure and styling). *Status: Done*
-**Part 3 – Interactivity:** JavaScript for forms, maps, etc. *Status: In Progress — mobile navigation, interactive map, and form validation are working; see Changelog below*
+**Part 3 – Interactivity:** JavaScript for forms, maps, etc. *Status: In Progress — mobile navigation, interactive map, form validation, FAQ accordion with search, schedule filtering, photo gallery with lightbox, scroll animations, dynamically-rendered news, and on-page SEO are all done; see Changelog below*
 
 ---
 
@@ -75,6 +75,13 @@ I've built 5 main pages (the minimum required):
 **Clear navigation** – the menu is consistent across all pages
 **Donate button** – stands out to encourage giving
 **Social media links** – connects to Facebook, Instagram, Twitter, and LinkedIn
+**FAQ accordion with live search** – the Get Help page's FAQ expands/collapses one question at a time, with a search box that filters questions as you type
+**Distribution schedule filter** – filter the schedule table by day (Mon–Sat) with one click
+**Photo gallery with lightbox** – an "Our Work in the Community" gallery on the About page; click any photo to view it full-size with next/previous/close controls (mouse, tap, or keyboard)
+**Scroll-reveal animations** – cards and list items animate gently into view as you scroll down the page
+**Dynamically-rendered news** – the homepage's "Latest News" list is generated with JavaScript from a data array rather than hardcoded, simulating how it would be populated from a CMS/API
+**AJAX form submission** – the Contact and Volunteer forms send their data with `fetch()` (POST, JSON) to a free practice API without reloading the page, with a loading state on the submit button and success/error messages; the URL can be swapped for a real backend later
+**On-page SEO** – descriptive meta titles/descriptions per page, Open Graph and Twitter Card tags for link previews, canonical URLs, NGO structured data (JSON-LD) on the homepage, a `robots.txt`, and a `sitemap.xml`
 
 
 
@@ -101,6 +108,8 @@ haven-site/
   services.html
   enquiry.html
   contact.html
+  robots.txt
+  sitemap.xml
   css/
     style.css
   js/
@@ -123,7 +132,7 @@ haven-site/
 - **2026** – Now serving 400+ families monthly with groceries and 600+ hot meals
 - **Part 1 (Done)** – Planning, proposal, sitemap, wireframes
 - **Part 2 (Done)** – HTML structure and CSS styling for all 5 pages
-- **Part 3 (In Progress)** – JavaScript: mobile navigation, interactive map, and form validation are done; still to come: any remaining dynamic features
+- **Part 3 (In Progress)** – JavaScript: mobile navigation, interactive map, form validation, FAQ accordion/search, schedule filtering, gallery/lightbox, scroll animations, dynamic content, and on-page SEO are all done; still to come: deployment, screenshot evidence, and final GitHub commit history
 
 
 
@@ -176,6 +185,21 @@ All pages are reachable from every other page via the main navigation menu and t
   - Tightened the header layout at very small phone widths (≤480px) so the logo, Donate button, and menu icon no longer crowd each other
   - Added `touch-action: manipulation` to buttons to remove the ~300ms tap delay some mobile browsers add
 - **12 October 2026** – Replaced the logo on all five pages: the old navy/turquoise badge had three lines of text ("H" / "FOOD" / "BANK") crammed into a 42px icon that was unreadable at that size. New logo is a rounded-square badge in the site's indigo gradient with a simple coral heart resting in a white bowl — reads clearly at header size and matches the current colour palette
+- **17 October 2026** – Completed the remaining Part 3 JavaScript and SEO requirements:
+  - **FAQ accordion + search** (`services.html`): converted the static FAQ list into a one-at-a-time accordion with expand/collapse animation, plus a live search box that filters questions as you type (`js/main.js`)
+  - **Distribution schedule filter** (`services.html`): added day-of-week filter buttons (All / Mon–Sat) above the schedule table that show/hide rows instantly, with a "no results" message when a day has no open locations
+  - **Photo gallery + lightbox** (`about.html`): new "Our Work in the Community" section with 6 photos; clicking one opens a full-size lightbox with next/previous/close controls, supporting mouse, touch, and keyboard (Esc, ←, →)
+  - **Scroll-reveal animations**: cards across every page (stats, values, events, team, timeline, locations, roles, partners, gallery, FAQ, news) now fade/slide into view on scroll using `IntersectionObserver`, with a `prefers-reduced-motion` fallback for users who've disabled animations
+  - **Dynamic content loading** (`index.html`): the "Latest News" list is now built entirely with JavaScript DOM methods (`createElement`/`appendChild`) from a data array instead of being hardcoded in the HTML, with a `<noscript>` fallback for the rare case JavaScript is disabled
+  - **Simulated AJAX submission**: the Contact and Volunteer form handlers now submit through a Promise-based async function with a loading spinner on the submit button, matching the shape of a real `fetch()` call — the `TODO` comment in `js/main.js` marks exactly where to plug in a real backend or Netlify Forms endpoint
+  - **On-page SEO**: added Open Graph and Twitter Card meta tags plus a canonical URL to all five pages (for clean link previews when shared), NGO structured data (JSON-LD, schema.org) to the homepage describing the organisation, and created `robots.txt` and `sitemap.xml` at the project root
+- **28 October 2026** – Rewrote `js/main.js` in plain, beginner-friendly JavaScript (function declarations, `for` loops, `getElementById`/`querySelector`, step-by-step comments) so that I can fully understand and explain every line. The advanced constructs from the 17 October version (`IntersectionObserver`, Promises, `matchMedia`, regex background splitting, 3D tilt maths) were replaced with simpler equivalents:
+  - **Scroll animations**: now a scroll event listener that checks `getBoundingClientRect().top` and adds the `reveal-visible` class; the CSS transition still does the fading/sliding
+  - **AJAX**: forms now send their data with a real `fetch()` POST (to the free JSONPlaceholder practice API) and handle success and failure messages; only the URL needs to change when Haven has a real server
+  - **Validation**: separate small check functions for email, South African phone number (10 digits starting with 0), name length, message length (min 10 characters), and date of birth (not in the future, volunteer must be 16+), each returning a clear error message shown under the field
+  - **Contact form** (`contact.html`): added a required "Type of Message" dropdown (General Enquiry, Donation, Volunteering, Request for Food Help). After validation the message type, name, email and message are compiled into a `mailto:` email addressed to `info@havenfoodbank.org`, with an "Open Email" button
+  - **Volunteer enquiry form** (`enquiry.html`): after a valid submission the page now shows a response about the chosen role (days/times), that volunteering costs nothing, and the days the volunteer said they are available
+  - Removed the mouse-tilt effect on gallery photos (unnecessary complexity); the CSS image-zoom and Ken Burns animations remain
 - *(Further changes will be logged here as Part 3 progresses)*
 
 
@@ -190,3 +214,6 @@ All pages are reachable from every other page via the main navigation menu and t
 - Leaflet. (2024). *Leaflet – an open-source JavaScript library for interactive maps*. Available at: https://leafletjs.com/ [Accessed 18 September 2026].
 - CARTO. (2024). *Basemaps*. Available at: https://carto.com/basemaps [Accessed 18 September 2026].
 - OpenStreetMap Foundation. (2024). *Tile Usage Policy*. Available at: https://operations.osmfoundation.org/policies/tiles/ [Accessed 18 September 2026].
+- Schema.org. (2024). *NGO - Schema.org Type*. Available at: https://schema.org/NGO [Accessed 17 October 2026].
+- Google Search Central. (2024). *Sitemaps: Learn about Sitemaps / robots.txt Introduction*. Available at: https://developers.google.com/search/docs/crawling-indexing [Accessed 17 October 2026].
+- MDN Web Docs. (2024). *Intersection Observer API*. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API [Accessed 17 October 2026].

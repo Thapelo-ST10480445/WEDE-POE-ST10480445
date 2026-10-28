@@ -138,6 +138,17 @@ select:focus-visible {
     padding: 0 32px;
 }
 
+/* Visually hidden but still readable by screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* --------------------------------------------------------------------------
    3. BUTTONS — pill-shaped, modern
    -------------------------------------------------------------------------- */
@@ -308,9 +319,45 @@ nav a.active {
     text-align: center;
     color: var(--color-white);
     position: relative;
+    overflow: hidden;
 }
-.page-header h1 { color: var(--color-white); margin-bottom: 12px; }
-.page-header p { color: rgba(255, 255, 255, 0.82); font-size: 1.15rem; }
+.page-header h1 { color: var(--color-white); margin-bottom: 12px; position: relative; z-index: 2; }
+.page-header p { color: rgba(255, 255, 255, 0.82); font-size: 1.15rem; position: relative; z-index: 2; }
+.page-header .container { position: relative; z-index: 2; }
+
+/* Slow continuous zoom/pan on the hero, inner-page header, and spotlight
+   photos — a classic "Ken Burns" effect that keeps the background feeling
+   alive without distracting from the text on top of it. The actual
+   background-image + darkening gradient are split into these two layers by
+   js/main.js (see "KEN BURNS BACKGROUND ZOOM"), which reads the original
+   inline background style off each section and rebuilds it this way. */
+.page-header-bg,
+.hero-bg,
+.spotlight-bg {
+    position: absolute;
+    inset: -5%;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    animation: kenBurns 26s ease-in-out infinite alternate;
+}
+
+.page-header-overlay,
+.hero-bg-overlay,
+.spotlight-bg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+@keyframes kenBurns {
+    0%   { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-header-bg, .hero-bg, .spotlight-bg { animation: none; }
+}
 
 /* --------------------------------------------------------------------------
    6. SECTION HEADERS
@@ -356,12 +403,13 @@ main section:nth-of-type(even) { background-color: var(--color-bg-alt); }
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 2;
     background: radial-gradient(circle at 15% 20%, rgba(255, 90, 95, 0.25), transparent 45%),
                 radial-gradient(circle at 85% 80%, rgba(166, 177, 255, 0.22), transparent 45%);
     pointer-events: none;
 }
 
-.hero-overlay { width: 100%; position: relative; z-index: 1; }
+.hero-overlay { width: 100%; position: relative; z-index: 3; }
 
 .hero-content {
     max-width: 680px;
@@ -502,10 +550,11 @@ main section:nth-of-type(even) { background-color: var(--color-bg-alt); }
     align-items: center;
 }
 
-.featured-image img {
+.featured-image {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
 }
+.featured-image img { border-radius: var(--radius-lg); display: block; }
 
 .featured-content p { margin: 18px 0 26px; }
 
@@ -568,11 +617,13 @@ main section:nth-of-type(even) { background-color: var(--color-bg-alt); }
 /* --------------------------------------------------------------------------
    11. SPOTLIGHT
    -------------------------------------------------------------------------- */
-.spotlight { padding: 0; color: var(--color-white); }
+.spotlight { padding: 0; color: var(--color-white); position: relative; overflow: hidden; }
 
 .spotlight-overlay {
     padding: 100px 0;
     background: linear-gradient(rgba(27,26,46,0.78), rgba(46,43,95,0.86));
+    position: relative;
+    z-index: 2;
 }
 
 .spotlight-content { max-width: 640px; margin: 0 auto; text-align: center; }
@@ -1088,14 +1139,98 @@ textarea { resize: vertical; min-height: 120px; }
    -------------------------------------------------------------------------- */
 .eligibility-list, .faq-list { max-width: 800px; margin: 0 auto; }
 
+/* FAQ search box */
+.faq-search {
+    position: relative;
+    max-width: 420px;
+    margin: 0 auto 28px;
+}
+.faq-search i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-light);
+}
+.faq-search input {
+    width: 100%;
+    padding: 12px 18px 12px 44px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+.faq-search input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(255, 90, 95, 0.12);
+}
+
+/* FAQ accordion */
 .faq-item {
     background-color: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 24px 28px;
     margin-bottom: 14px;
     box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
-.faq-item h3 { color: var(--color-secondary); margin-bottom: 8px; font-size: 1.05rem; }
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 28px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-secondary);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+.faq-question i { transition: transform var(--transition); color: var(--color-primary); flex-shrink: 0; }
+.faq-item.open .faq-question i { transform: rotate(180deg); }
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition);
+}
+.faq-answer p { padding: 0 28px 22px; font-size: 0.95rem; }
+
+/* Schedule day filter */
+.schedule-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+.filter-btn {
+    padding: 9px 20px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--color-border);
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+.filter-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.filter-btn.active {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: var(--color-white);
+}
 
 .schedule-table {
     width: 100%;
@@ -1299,6 +1434,235 @@ footer {
 }
 
 /* --------------------------------------------------------------------------
+   27f. GALLERY GRID + LIGHTBOX (About page)
+   -------------------------------------------------------------------------- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.gallery-item {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    background: none;
+    touch-action: manipulation;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition);
+}
+.gallery-item::after {
+    content: "\f00e";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: var(--color-white);
+    background: rgba(27, 26, 46, 0.45);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+@media (hover: hover) and (pointer: fine) {
+    .gallery-item:hover { box-shadow: var(--shadow-lg); }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item:hover::after { opacity: 1; }
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(10, 9, 20, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition), visibility var(--transition);
+    padding: 24px;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+
+.lightbox-figure { max-width: 900px; max-height: 85vh; text-align: center; margin: 0; }
+.lightbox-image {
+    max-width: 100%;
+    max-height: 72vh;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+}
+.lightbox-caption { color: rgba(255, 255, 255, 0.85); font-size: 0.92rem; margin-top: 16px; }
+
+.lightbox-close,
+.lightbox-arrow {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-white);
+    border-radius: 50%;
+    width: 46px; height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    touch-action: manipulation;
+    transition: background-color var(--transition);
+}
+.lightbox-close:hover, .lightbox-arrow:hover { background-color: rgba(255, 255, 255, 0.22); }
+.lightbox-close { top: 24px; right: 24px; }
+.lightbox-prev { left: 24px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+/* --------------------------------------------------------------------------
+   27g. SCROLL-REVEAL ANIMATIONS
+   Applied by js/main.js (a scroll listener adds .reveal-visible); elements start slightly
+   lowered and faded, then settle into place the first time they enter
+   the viewport.
+   -------------------------------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Cinematic image reveal: the photo itself starts zoomed-in and faded,
+   then eases down to its normal size the first time it scrolls into view —
+   applied to the homepage featured photo and every gallery photo, on top
+   of the card-level .reveal fade/rise above. */
+.img-reveal { overflow: hidden; }
+.img-reveal img {
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease;
+}
+.img-reveal.reveal img { transform: scale(1.18); opacity: 0; }
+.img-reveal.reveal-visible img { transform: scale(1); opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    .img-reveal img { transition: none; }
+    .img-reveal.reveal img { transform: none; opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   27h. PHOTO SECTIONS (mosaic, call-to-action band, how-it-works steps)
+   -------------------------------------------------------------------------- */
+.photo-mosaic-section, .how-it-works { padding: 80px 0; }
+.photo-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 16px;
+}
+.mosaic-item {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(27, 26, 46, 0.15);
+}
+.mosaic-tall { grid-row: span 2; }
+.mosaic-wide { grid-column: span 2; }
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+.mosaic-item figcaption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 36px 16px 14px;
+    color: #fff;
+    font-weight: 600;
+    background: linear-gradient(transparent, rgba(27, 26, 46, 0.85));
+}
+@media (hover: hover) and (pointer: fine) {
+    .mosaic-item:hover img { transform: scale(1.08); }
+}
+
+.cta-band {
+    padding: 90px 0;
+    text-align: center;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+}
+.cta-band h2 { color: #fff; margin-bottom: 14px; }
+.cta-band p { max-width: 620px; margin: 0 auto 28px; opacity: 0.92; }
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-outline-light {
+    display: inline-block;
+    padding: 14px 28px;
+    border: 2px solid #fff;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    min-height: 44px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.btn-outline-light:hover, .btn-outline-light:active { background: #fff; color: var(--color-secondary, #2E2B5F); }
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+}
+.step-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(27, 26, 46, 0.1);
+    padding-bottom: 24px;
+}
+.step-card h3 { margin: 18px 22px 8px; }
+.step-card p { margin: 0 22px; }
+.step-photo { position: relative; height: 200px; overflow: hidden; }
+.step-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.step-number {
+    position: absolute;
+    top: 14px; left: 14px;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: #FF5A5F;
+    color: #fff;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 16px rgba(255, 90, 95, 0.45);
+}
+
+@media (max-width: 900px) {
+    .photo-mosaic { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+}
+@media (max-width: 480px) {
+    .photo-mosaic-section, .how-it-works { padding: 56px 0; }
+    .photo-mosaic { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+    .mosaic-tall, .mosaic-wide { grid-row: auto; grid-column: auto; }
+    .cta-band { padding: 64px 0; }
+}
+
+
+/* --------------------------------------------------------------------------
    28. RESPONSIVE — TABLET (≤ 1024px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
@@ -1309,6 +1673,7 @@ footer {
     .events-grid, .location-grid { grid-template-columns: repeat(2, 1fr); }
     .featured-grid, .mv-grid { grid-template-columns: 1fr; gap: 32px; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* --------------------------------------------------------------------------
@@ -1316,11 +1681,6 @@ footer {
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
     main section { padding: var(--space-xl) 0; }
-
-    /* background-attachment: fixed breaks/flickers on iOS Safari and many
-       Android browsers; the hero's inline style sets it, so override it
-       back to normal scrolling on mobile where it actually matters. */
-    .hero { background-attachment: scroll !important; }
 
     nav { display: none; }
     nav.nav-open {
@@ -1365,6 +1725,13 @@ footer {
     .social-links, .social-icons { justify-content: center; }
     .newsletter-form { max-width: 320px; margin: 0 auto; }
     .contact-info li { justify-content: center; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .gallery-item img { height: 140px; }
+    .lightbox-prev { left: 10px; }
+    .lightbox-next { right: 10px; }
+    .lightbox-close { top: 14px; right: 14px; }
+    .lightbox-arrow { width: 40px; height: 40px; }
 }
 
 /* --------------------------------------------------------------------------
