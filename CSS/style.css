@@ -1569,9 +1569,17 @@ footer {
 .photo-mosaic {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 200px;
+    grid-template-rows: 230px 230px;
+    grid-template-areas:
+        "a b b c"
+        "a d e c";
     gap: 16px;
 }
+.m-a { grid-area: a; }
+.m-b { grid-area: b; }
+.m-c { grid-area: c; }
+.m-d { grid-area: d; }
+.m-e { grid-area: e; }
 .mosaic-item {
     position: relative;
     margin: 0;
@@ -1579,8 +1587,6 @@ footer {
     border-radius: var(--radius-lg);
     box-shadow: 0 10px 30px rgba(27, 26, 46, 0.15);
 }
-.mosaic-tall { grid-row: span 2; }
-.mosaic-wide { grid-column: span 2; }
 .mosaic-item img {
     width: 100%;
     height: 100%;
@@ -1652,12 +1658,24 @@ footer {
 }
 
 @media (max-width: 900px) {
-    .photo-mosaic { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+    .photo-mosaic {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 260px 200px 200px;
+        grid-template-areas:
+            "a c"
+            "b b"
+            "d e";
+    }
 }
 @media (max-width: 480px) {
     .photo-mosaic-section, .how-it-works { padding: 56px 0; }
-    .photo-mosaic { grid-template-columns: 1fr; grid-auto-rows: 220px; }
-    .mosaic-tall, .mosaic-wide { grid-row: auto; grid-column: auto; }
+    .photo-mosaic {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        grid-template-areas: none;
+        grid-auto-rows: 240px;
+    }
+    .m-a, .m-b, .m-c, .m-d, .m-e { grid-area: auto; }
     .cta-band { padding: 64px 0; }
 }
 
