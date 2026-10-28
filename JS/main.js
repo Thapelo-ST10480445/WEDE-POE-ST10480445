@@ -1,14 +1,10 @@
 /* ==========================================================================
    HAVEN COMMUNITY FOOD BANK — MAIN SCRIPT
    Handles: mobile navigation, interactive Leaflet map (contact page),
-   form validation + simulated AJAX submission, newsletter signup,
-   back-to-top, scroll-reveal animations, FAQ accordion + live search,
-   distribution-schedule day filter, photo gallery + lightbox, and
-   dynamically-rendered homepage news.
-   No backend exists yet, so form "submission" is simulated with a
-   Promise-based delay that mimics a real AJAX/fetch round trip — swap the
-   TODO in handleFormSubmit() for a real fetch() call once a backend or a
-   service like Netlify Forms is wired up.
+   form validation + submit feedback, newsletter signup, back-to-top.
+   No backend exists yet, so "submission" is simulated client-side with a
+   clear success message — swap the TODO in handleFormSubmit() for a real
+   fetch() call once a backend/endpoint is available.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -161,21 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
         field.insertAdjacentElement('afterend', note);
     }
 
-    // Simulates an asynchronous AJAX submission (e.g. fetch() to a backend).
-    // Returns a Promise that resolves after a short delay, the same shape a
-    // real fetch() call would have — so swapping in a real endpoint later is
-    // a one-line change (replace the Promise body with an actual fetch()).
-    function simulateAjaxSubmit(formData) {
-        return new Promise(function (resolve) {
-            setTimeout(function () {
-                // TODO: replace this whole function body with, e.g.:
-                //   return fetch('/api/contact', { method: 'POST', body: formData })
-                //       .then(res => res.json());
-                resolve({ ok: true });
-            }, 900);
-        });
-    }
-
     function handleFormSubmit(form, options) {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -214,34 +195,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Asynchronous "submission" — disable the button, send the data
-            // off, and only show success once the (simulated) response comes
-            // back, exactly like a real AJAX/fetch submission would.
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            }
-
-            simulateAjaxSubmit(new FormData(form))
-                .then(function (response) {
-                    if (response && response.ok) {
-                        showFormMessage(form, 'success', (options && options.successText) || 'Thank you — your message has been sent!');
-                        form.reset();
-                    } else {
-                        showFormMessage(form, 'error', 'Something went wrong sending your message. Please try again.');
-                    }
-                })
-                .catch(function () {
-                    showFormMessage(form, 'error', 'Something went wrong sending your message. Please try again.');
-                })
-                .finally(function () {
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnHtml;
-                    }
-                });
+            // TODO: replace with a real fetch() to your backend/Netlify Forms
+            // endpoint once one exists. For now we confirm success to the user.
+            showFormMessage(form, 'success', (options && options.successText) || 'Thank you — your message has been sent!');
+            form.reset();
         });
     }
 
@@ -287,236 +244,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 2500);
         });
     });
-
-    /* ---------------------------------------------------------------------
-       7. SCROLL-REVEAL ANIMATIONS (every page)
-       Cards and list items fade/slide into view as they enter the
-       viewport, using IntersectionObserver so nothing is re-calculated on
-       every scroll event. Falls back to "just show everything" if
-       IntersectionObserver isn't supported.
-       --------------------------------------------------------------------- */
-    const revealSelectors = [
-        '.stat-card', '.value-card', '.event-card', '.timeline-item',
-        '.partner-item', '.contact-item', '.location-card',
-        '.role-card', '.team-member', '.mv-card', '.gallery-item', '.faq-item'
-    ];
-    const revealTargets = document.querySelectorAll(revealSelectors.join(', '));
-
-    // Declared here (outer scope) so the dynamically-created news items in
-    // section 11 can register themselves with the same observer.
-    let revealObserver = null;
-    if ('IntersectionObserver' in window) {
-        revealObserver = new IntersectionObserver(function (entries, observer) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-        revealTargets.forEach(function (el) {
-            el.classList.add('reveal');
-            revealObserver.observe(el);
-        });
-    }
-    // If IntersectionObserver isn't supported, elements simply stay at their
-    // default (fully visible) state since .reveal is never added.
-
-    /* ---------------------------------------------------------------------
-       8. FAQ ACCORDION + LIVE SEARCH (services.html)
-       --------------------------------------------------------------------- */
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems.length) {
-        faqItems.forEach(function (item) {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            if (!question || !answer) return;
-
-            question.addEventListener('click', function () {
-                const isOpen = item.classList.contains('open');
-
-                // Close any other open FAQ item (accordion behaviour)
-                faqItems.forEach(function (other) {
-                    if (other !== item) {
-                        other.classList.remove('open');
-                        const otherAnswer = other.querySelector('.faq-answer');
-                        const otherQuestion = other.querySelector('.faq-question');
-                        if (otherAnswer) otherAnswer.style.maxHeight = null;
-                        if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
-                    }
-                });
-
-                if (isOpen) {
-                    item.classList.remove('open');
-                    answer.style.maxHeight = null;
-                    question.setAttribute('aria-expanded', 'false');
-                } else {
-                    item.classList.add('open');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    question.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
-
-        const faqSearch = document.getElementById('faqSearch');
-        const faqEmpty = document.getElementById('faqEmpty');
-        if (faqSearch) {
-            faqSearch.addEventListener('input', function () {
-                const term = faqSearch.value.trim().toLowerCase();
-                let visibleCount = 0;
-
-                faqItems.forEach(function (item) {
-                    const text = item.textContent.toLowerCase();
-                    const matches = term === '' || text.includes(term);
-                    item.style.display = matches ? '' : 'none';
-                    if (matches) visibleCount++;
-                });
-
-                if (faqEmpty) faqEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
-            });
-        }
-    }
-
-    /* ---------------------------------------------------------------------
-       9. DISTRIBUTION SCHEDULE — FILTER BY DAY (services.html)
-       --------------------------------------------------------------------- */
-    const scheduleFilter = document.getElementById('scheduleFilter');
-    const scheduleTable = document.getElementById('scheduleTable');
-    if (scheduleFilter && scheduleTable) {
-        const filterButtons = scheduleFilter.querySelectorAll('.filter-btn');
-        const rows = scheduleTable.querySelectorAll('tbody tr');
-        const scheduleEmpty = document.getElementById('scheduleEmpty');
-
-        filterButtons.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                filterButtons.forEach(function (b) { b.classList.remove('active'); });
-                btn.classList.add('active');
-
-                const day = btn.getAttribute('data-day');
-                let visibleCount = 0;
-
-                rows.forEach(function (row) {
-                    const days = (row.getAttribute('data-days') || '').split(',');
-                    const matches = day === 'all' || days.indexOf(day) !== -1;
-                    row.style.display = matches ? '' : 'none';
-                    if (matches) visibleCount++;
-                });
-
-                if (scheduleEmpty) scheduleEmpty.style.display = visibleCount === 0 ? 'block' : 'none';
-            });
-        });
-    }
-
-    /* ---------------------------------------------------------------------
-       10. GALLERY + LIGHTBOX (about.html)
-       --------------------------------------------------------------------- */
-    const galleryGrid = document.getElementById('galleryGrid');
-    const lightbox = document.getElementById('lightbox');
-    if (galleryGrid && lightbox) {
-        const galleryItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const lightboxPrev = document.getElementById('lightboxPrev');
-        const lightboxNext = document.getElementById('lightboxNext');
-        let currentIndex = 0;
-
-        function openLightbox(index) {
-            currentIndex = (index + galleryItems.length) % galleryItems.length;
-            const item = galleryItems[currentIndex];
-            lightboxImage.src = item.getAttribute('data-full');
-            lightboxImage.alt = item.getAttribute('data-caption') || '';
-            lightboxCaption.textContent = item.getAttribute('data-caption') || '';
-            lightbox.classList.add('open');
-            lightbox.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('open');
-            lightbox.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        galleryItems.forEach(function (item, index) {
-            item.addEventListener('click', function () { openLightbox(index); });
-        });
-
-        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        if (lightboxPrev) lightboxPrev.addEventListener('click', function () { openLightbox(currentIndex - 1); });
-        if (lightboxNext) lightboxNext.addEventListener('click', function () { openLightbox(currentIndex + 1); });
-
-        // Close on backdrop click (but not when clicking the image/caption itself)
-        lightbox.addEventListener('click', function (e) {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        // Keyboard support: Escape closes, arrow keys navigate
-        document.addEventListener('keydown', function (e) {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') openLightbox(currentIndex - 1);
-            if (e.key === 'ArrowRight') openLightbox(currentIndex + 1);
-        });
-    }
-
-    /* ---------------------------------------------------------------------
-       11. DYNAMIC NEWS LIST (index.html)
-       Rendered entirely with JavaScript DOM methods from a data array,
-       rather than hardcoded in the HTML — a stand-in for posts that would
-       normally come from a CMS or API.
-       --------------------------------------------------------------------- */
-    const newsList = document.getElementById('newsList');
-    if (newsList) {
-        const newsItems = [
-            {
-                date: 'August 2026',
-                title: 'New Distribution Point Opening',
-                text: "We're excited to announce a new distribution point opening in Strandfontein, serving the community every Saturday."
-            },
-            {
-                date: 'July 2026',
-                title: 'Winter Coat Drive',
-                text: 'Drop off warm clothing at any of our distribution locations to help keep our community warm this winter.'
-            },
-            {
-                date: 'June 2026',
-                title: 'Celebrating Our Volunteers',
-                text: "Thank you to our 50+ volunteers for their incredible dedication this past year. We couldn't do it without you!"
-            }
-        ];
-
-        newsItems.forEach(function (item) {
-            const li = document.createElement('li');
-
-            const dateSpan = document.createElement('span');
-            dateSpan.className = 'news-date';
-            dateSpan.textContent = item.date;
-
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'news-content';
-
-            const heading = document.createElement('h4');
-            heading.textContent = item.title;
-
-            const para = document.createElement('p');
-            para.textContent = item.text;
-
-            contentDiv.appendChild(heading);
-            contentDiv.appendChild(para);
-            li.appendChild(dateSpan);
-            li.appendChild(contentDiv);
-            newsList.appendChild(li);
-
-            // Hook the newly-created item into the same scroll-reveal
-            // observer set up in section 7 (it didn't exist yet when that
-            // ran its initial querySelectorAll).
-            if (revealObserver) {
-                li.classList.add('reveal');
-                revealObserver.observe(li);
-            }
-        });
-    }
 
 });
