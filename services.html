@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get food assistance from Haven Community Food Bank. Find distribution times, locations, and eligibility information.">
-    <meta name="keywords" content="food assistance, food parcels, Cape Town, food bank, distribution schedule">
+    <meta name="description" content="Contact Haven Community Food Bank. Get in touch for enquiries, volunteer opportunities, or donations.">
+    <meta name="keywords" content="contact, food bank, Cape Town, phone, email, address, map">
     <meta name="author" content="Haven Community Food Bank">
-    <title>Haven Community Food Bank - Get Help</title>
+    <title>Haven Community Food Bank - Contact Us</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg"><text y='.9em' font-size='90'>
-    <link rel="canonical" href="https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/services.html">
+    <link rel="canonical" href="https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/contact.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Haven Community Food Bank - Get Help">
-    <meta property="og:description" content="Get food assistance from Haven Community Food Bank. Find distribution times, locations, and eligibility information.">
-    <meta property="og:image" content="https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg?auto=compress&cs=tinysrgb&w=1200">
-    <meta property="og:url" content="https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/services.html">
+    <meta property="og:title" content="Haven Community Food Bank - Contact Us">
+    <meta property="og:description" content="Contact Haven Community Food Bank. Get in touch for enquiries, volunteer opportunities, or donations.">
+    <meta property="og:image" content="https://images.pexels.com/photos/6646893/pexels-photo-6646893.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    <meta property="og:url" content="https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/contact.html">
     <meta property="og:site_name" content="Haven Community Food Bank">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Haven Community Food Bank - Get Help">
-    <meta name="twitter:description" content="Get food assistance from Haven Community Food Bank. Find distribution times, locations, and eligibility information.">
-    <meta name="twitter:image" content="https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    <meta name="twitter:title" content="Haven Community Food Bank - Contact Us">
+    <meta name="twitter:description" content="Contact Haven Community Food Bank. Get in touch for enquiries, volunteer opportunities, or donations.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/6646893/pexels-photo-6646893.jpeg?auto=compress&cs=tinysrgb&w=1200">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -33,14 +34,14 @@
                     <svg width="42" height="42" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="havenLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#2E2B5F"/>
-                                <stop offset="100%" stop-color="#1B1A2E"/>
+                                <stop offset="0%" stop-color="#1F5D3A"/>
+                                <stop offset="100%" stop-color="#10261A"/>
                             </linearGradient>
                         </defs>
                         <rect width="100" height="100" rx="22" fill="url(#havenLogoGrad)"/>
-                        <circle cx="42" cy="32" r="8" fill="#FF5A5F"/>
-                        <circle cx="58" cy="32" r="8" fill="#FF5A5F"/>
-                        <path d="M34,34 L50,52 L66,34 Z" fill="#FF5A5F"/>
+                        <circle cx="42" cy="32" r="8" fill="#1F8A4C"/>
+                        <circle cx="58" cy="32" r="8" fill="#1F8A4C"/>
+                        <path d="M34,34 L50,52 L66,34 Z" fill="#1F8A4C"/>
                         <ellipse cx="50" cy="56" rx="27" ry="6" fill="#FFFFFF"/>
                         <path d="M22,56 Q22,80 50,82 Q78,80 78,56 Z" fill="#FFFFFF"/>
                     </svg>
@@ -54,9 +55,9 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="services.html">Services</a></li>
                     <li><a href="enquiry.html">Volunteer</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -75,132 +76,121 @@
 
         <!-- PAGE HEADER -->
         <section class="page-header">
-            <div class="page-header-bg" style="background: linear-gradient(rgba(27,26,46,0.7), rgba(46,43,95,0.82)), url('https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;"></div>
+            <div class="page-header-bg" style="background: linear-gradient(rgba(16,38,26,0.7), rgba(31,93,58,0.82)), url('https://images.pexels.com/photos/6646893/pexels-photo-6646893.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;"></div>
             <div class="container">
-                <h1>Get Help</h1>
-                <p>Food assistance is available to anyone who needs it — no judgement, just support</p>
+                <h1>Contact Us</h1>
+                <p>We'd love to hear from you</p>
             </div>
         </section>
 
-        <!-- ELIGIBILITY -->
-        <section class="eligibility">
-            <div class="container eligibility-list">
-                <div class="section-header">
-                    <span class="section-tag">Who We Help</span>
-                    <h2>Eligibility</h2>
-                    <p>Haven exists for anyone in our community facing food insecurity. There's no complicated application process — just come to a distribution point during open hours.</p>
-                </div>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <i class="fas fa-id-card"></i>
-                        <h3>Bring ID</h3>
-                        <p>A South African ID or any form of identification for the household member collecting</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fas fa-home"></i>
-                        <h3>Proof of Address</h3>
-                        <p>Any recent document showing where you live (a utility bill, lease, or letter is fine)</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fas fa-users"></i>
-                        <h3>Household Size</h3>
-                        <p>Let our team know how many people are in your household so parcels are sized fairly</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fas fa-heart"></i>
-                        <h3>No Judgement</h3>
-                        <p>First-time visitor or long-time neighbour — everyone is welcomed with dignity</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DISTRIBUTION SCHEDULE -->
-        <section class="schedule">
+        <!-- CONTACT DETAILS -->
+        <section class="contact-details">
             <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Plan Your Visit</span>
-                    <h2>Distribution Schedule</h2>
-                    <p>Food parcels and hot meals are distributed on a rotating schedule across our three locations.</p>
-                </div>
-                <div class="schedule-filter" id="scheduleFilter" role="group" aria-label="Filter schedule by day">
-                    <button type="button" class="filter-btn active" data-day="all">All Days</button>
-                    <button type="button" class="filter-btn" data-day="Mon">Mon</button>
-                    <button type="button" class="filter-btn" data-day="Tue">Tue</button>
-                    <button type="button" class="filter-btn" data-day="Wed">Wed</button>
-                    <button type="button" class="filter-btn" data-day="Thu">Thu</button>
-                    <button type="button" class="filter-btn" data-day="Fri">Fri</button>
-                    <button type="button" class="filter-btn" data-day="Sat">Sat</button>
-                </div>
-                <div style="overflow-x:auto;">
-                    <table class="schedule-table" id="scheduleTable">
-                        <thead>
-                            <tr>
-                                <th>Location</th>
-                                <th>Days</th>
-                                <th>Time</th>
-                                <th>Address</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-days="Mon,Wed,Sat">
-                                <td>Philippi Hub</td>
-                                <td>Mon, Wed, Sat</td>
-                                <td>10am – 2pm</td>
-                                <td>123 Main Rd, Philippi, 7785</td>
-                            </tr>
-                            <tr data-days="Tue,Fri">
-                                <td>Khayelitsha Satellite</td>
-                                <td>Tue, Fri</td>
-                                <td>11am – 3pm</td>
-                                <td>45 Mandela Ave, Khayelitsha, 7784</td>
-                            </tr>
-                            <tr data-days="Wed,Thu">
-                                <td>Mitchells Plain Satellite</td>
-                                <td>Wed, Thu</td>
-                                <td>9am – 1pm</td>
-                                <td>78 Second Ave, Mitchells Plain, 7785</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p id="scheduleEmpty" class="form-note" style="display:none;">No distribution points are open on this day — check another day above.</p>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p><a href="tel:+27211234567">(021) 123-4567</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:info@havenfoodbank.org">info@havenfoodbank.org</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Address</h3>
+                            <p>123 Main Rd, Philippi, 7785</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Office Hours</h3>
+                            <p>Mon-Fri: 8am – 5pm</p>
+                            <p>Saturday: 9am – 1pm</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- HOW A DISTRIBUTION DAY WORKS -->
-        <section class="how-it-works">
+        <!-- ENQUIRY FORM -->
+        <section class="enquiry-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">What to Expect</span>
-                    <h2>How a Distribution Day <span class="highlight">Works</span></h2>
+                    <span class="section-tag">Get In Touch</span>
+                    <h2>Send Us a Message</h2>
                 </div>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-photo"><img src="https://images.pexels.com/photos/6646952/pexels-photo-6646952.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Arrive and Check In" loading="lazy"><span class="step-number">1</span></div>
-                        <h3>Arrive and Check In</h3>
-                        <p>Bring your ID and proof of address. A friendly volunteer will welcome you and note your household size.</p>
+
+                <!-- Contact Form -->
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="contactName">Your Name *</label>
+                        <input type="text" id="contactName" name="contactName" required placeholder="e.g., Thandi Nkosi">
                     </div>
-                    <div class="step-card">
-                        <div class="step-photo"><img src="https://images.pexels.com/photos/6646871/pexels-photo-6646871.jpeg?auto=compress&cs=tinysrgb&w=600" alt="We Pack Your Parcel" loading="lazy"><span class="step-number">2</span></div>
-                        <h3>We Pack Your Parcel</h3>
-                        <p>Volunteers pack a parcel of staples, tinned goods and fresh produce suited to your household.</p>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email *</label>
+                        <input type="email" id="contactEmail" name="contactEmail" required placeholder="thandi@example.com">
                     </div>
-                    <div class="step-card">
-                        <div class="step-photo"><img src="https://images.pexels.com/photos/6895226/pexels-photo-6895226.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Collect and Go Home" loading="lazy"><span class="step-number">3</span></div>
-                        <h3>Collect and Go Home</h3>
-                        <p>Pick up your parcel, ask us about other support, and head home with food for the week.</p>
+
+                    <div class="form-group">
+                        <label for="messageType">Type of Message *</label>
+                        <select id="messageType" name="messageType" required>
+                            <option value="">-- Select a type --</option>
+                            <option value="General Enquiry">General Enquiry</option>
+                            <option value="Donation">Donation</option>
+                            <option value="Volunteering">Volunteering</option>
+                            <option value="Request for Food Help">Request for Food Help</option>
+                        </select>
                     </div>
-                </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Volunteer Enquiry">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Your message..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Enquiry
+                        </button>
+                    </div>
+
+                    <p class="form-note">* Required fields</p>
+                </form>
             </div>
         </section>
 
-        <!-- LOCATIONS -->
+        <!-- INTERACTIVE MAP -->
+        <section class="map-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Find Us</span>
+                    <h2>Our Locations</h2>
+                    <p>Tap a pin to see hours, contact details, and get directions.</p>
+                </div>
+                <div id="leafletMap" class="map-container" role="application" aria-label="Map of Haven Community Food Bank distribution locations"></div>
+            </div>
+        </section>
+
+        <!-- LOCATION CARDS -->
         <section class="locations">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Where We Are</span>
-                    <h2>Our Locations</h2>
+                    <span class="section-tag">Details</span>
+                    <h2>Distribution Points</h2>
                 </div>
                 <div class="location-grid">
                     <article class="location-card">
@@ -209,6 +199,9 @@
                         <p><strong>Address:</strong> 123 Main Rd, Philippi, 7785</p>
                         <p><strong>Hours:</strong> Mon, Wed, Sat (10am-2pm)</p>
                         <p><strong>Contact:</strong> Nomsa (021) 123-4567</p>
+                        <a class="btn btn-small" href="https://www.google.com/maps/search/?api=1&query=123%20Main%20Rd%2C%20Philippi%2C%207785" target="_blank" rel="noopener">
+                            <i class="fas fa-directions"></i> Directions
+                        </a>
                     </article>
                     <article class="location-card">
                         <i class="fas fa-map-marker-alt location-icon"></i>
@@ -216,6 +209,9 @@
                         <p><strong>Address:</strong> 45 Mandela Ave, Khayelitsha, 7784</p>
                         <p><strong>Hours:</strong> Tue, Fri (11am-3pm)</p>
                         <p><strong>Contact:</strong> Peter (021) 123-4568</p>
+                        <a class="btn btn-small" href="https://www.google.com/maps/search/?api=1&query=45%20Mandela%20Ave%2C%20Khayelitsha%2C%207784" target="_blank" rel="noopener">
+                            <i class="fas fa-directions"></i> Directions
+                        </a>
                     </article>
                     <article class="location-card">
                         <i class="fas fa-map-marker-alt location-icon"></i>
@@ -223,74 +219,27 @@
                         <p><strong>Address:</strong> 78 Second Ave, Mitchells Plain, 7785</p>
                         <p><strong>Hours:</strong> Wed, Thu (9am-1pm)</p>
                         <p><strong>Contact:</strong> Thandi (021) 123-4569</p>
+                        <a class="btn btn-small" href="https://www.google.com/maps/search/?api=1&query=78%20Second%20Ave%2C%20Mitchells%20Plain%2C%207785" target="_blank" rel="noopener">
+                            <i class="fas fa-directions"></i> Directions
+                        </a>
                     </article>
                 </div>
-                <p style="text-align:center; margin-top: 28px;">
-                    <a href="contact.html" class="btn btn-primary"><i class="fas fa-map-marked-alt"></i> View Interactive Map</a>
-                </p>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section class="faq">
-            <div class="container faq-list">
+        <!-- SOCIAL MEDIA LINKS -->
+        <section class="social-section">
+            <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Questions</span>
-                    <h2>Frequently Asked Questions</h2>
+                    <span class="section-tag">Stay Connected</span>
+                    <h2>Connect With Us</h2>
                 </div>
-                <div class="faq-search">
-                    <label for="faqSearch" class="sr-only">Search frequently asked questions</label>
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="faqSearch" placeholder="Search FAQs — try &quot;ID&quot; or &quot;book&quot;...">
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <div id="faqItems">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Do I need to book in advance?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>No booking is needed. Simply arrive at any distribution point during its open hours — see the schedule above.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>How often can I collect a food parcel?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Households can collect one parcel per week from any single location during that location's open days.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>What should I bring?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Please bring your ID (or the collecting household member's ID) and, if you have it, a proof of address. We'll help even without paperwork — just ask a volunteer.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Can I collect on behalf of someone else?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes. Bring your own ID along with the name of the household you're collecting for, and our team will assist you.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            <span>Is there support beyond food parcels?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Our Philippi hub also serves hot meals and can connect you with partner organisations for additional social support.</p>
-                        </div>
-                    </div>
-                </div>
-                <p id="faqEmpty" class="form-note" style="display:none;">No questions match your search — try a different word.</p>
             </div>
         </section>
 
@@ -345,6 +294,7 @@
 
     <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="JS/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

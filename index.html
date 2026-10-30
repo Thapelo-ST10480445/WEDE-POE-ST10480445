@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://images.pexels.com/photos/6995260/pexels-photo-6995260.jpeg?auto=compress&cs=tinysrgb&w=1200">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -50,6 +50,7 @@
 </head>
 <body>
 
+    <!-- HEADER: Navigation Menu -->
     <header>
         <div class="container">
             <div class="logo">
@@ -57,14 +58,14 @@
                     <svg width="42" height="42" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="havenLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#2E2B5F"/>
-                                <stop offset="100%" stop-color="#1B1A2E"/>
+                                <stop offset="0%" stop-color="#1F5D3A"/>
+                                <stop offset="100%" stop-color="#10261A"/>
                             </linearGradient>
                         </defs>
                         <rect width="100" height="100" rx="22" fill="url(#havenLogoGrad)"/>
-                        <circle cx="42" cy="32" r="8" fill="#FF5A5F"/>
-                        <circle cx="58" cy="32" r="8" fill="#FF5A5F"/>
-                        <path d="M34,34 L50,52 L66,34 Z" fill="#FF5A5F"/>
+                        <circle cx="42" cy="32" r="8" fill="#1F8A4C"/>
+                        <circle cx="58" cy="32" r="8" fill="#1F8A4C"/>
+                        <path d="M34,34 L50,52 L66,34 Z" fill="#1F8A4C"/>
                         <ellipse cx="50" cy="56" rx="27" ry="6" fill="#FFFFFF"/>
                         <path d="M22,56 Q22,80 50,82 Q78,80 78,56 Z" fill="#FFFFFF"/>
                     </svg>
@@ -84,7 +85,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#" class="btn-donate open-donate-modal">
+                <a href="contact.html" class="btn-donate">
                     <i class="fas fa-heart"></i> <span>Donate</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle Navigation" aria-expanded="false">
@@ -94,10 +95,12 @@
         </div>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main>
 
+        <!-- HERO -->
         <section class="hero">
-            <div class="hero-bg" style="background: linear-gradient(rgba(27,26,46,0.42), rgba(27,26,46,0.72)), url('https://images.pexels.com/photos/6647178/pexels-photo-6647178.jpeg?auto=compress&cs=tinysrgb&w=1600'), url('images/hero-food-distribution-1200.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="hero-bg" style="background: linear-gradient(rgba(16,38,26,0.42), rgba(16,38,26,0.72)), url('https://images.pexels.com/photos/6647178/pexels-photo-6647178.jpeg?auto=compress&cs=tinysrgb&w=1600'), url('images/hero-food-distribution-1200.jpg'); background-size: cover; background-position: center;"></div>
             <div class="hero-overlay">
                 <div class="hero-content">
                     <div class="hero-badge">Since 2015</div>
@@ -133,6 +136,7 @@
             </div>
         </section>
 
+        <!-- IMPACT STATISTICS -->
         <section class="stats">
             <div class="container">
                 <div class="section-header">
@@ -169,6 +173,7 @@
             </div>
         </section>
 
+        <!-- FEATURED SECTION -->
         <section class="featured">
             <div class="container">
                 <div class="featured-grid">
@@ -203,6 +208,7 @@
             </div>
         </section>
 
+        <!-- LIFE AT HAVEN PHOTO MOSAIC -->
         <section class="photo-mosaic-section">
             <div class="container">
                 <div class="section-header">
@@ -234,6 +240,7 @@
             </div>
         </section>
 
+        <!-- UPCOMING DISTRIBUTIONS -->
         <section class="upcoming-events">
             <div class="container">
                 <div class="section-header">
@@ -282,36 +289,26 @@
             </div>
         </section>
 
-        <section class="volunteer-finder" id="volunteer">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Get Involved</span>
-                    <h2>Find Your Perfect Volunteer Role</h2>
-                    <p class="section-lead">Filter by your skills and availability to see where you can make the biggest impact.</p>
-                </div>
-
-                <div class="volunteer-filters reveal">
-                    <input type="text" id="roleSearch" class="search-input" placeholder="Search roles (e.g., 'driver')">
-                    
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">All Roles</button>
-                        <button class="filter-btn" data-filter="weekday">Weekdays</button>
-                        <button class="filter-btn" data-filter="weekend">Weekends</button>
-                        <button class="filter-btn" data-filter="physical">Physical</button>
-                        <button class="filter-btn" data-filter="admin">Admin</button>
+        <!-- VOLUNTEER SPOTLIGHT -->
+        <section class="spotlight" style="background: linear-gradient(135deg, #10261A, #1F5D3A), url('https://images.pexels.com/photos/6647178/pexels-photo-6647178.jpeg?auto=compress&cs=tinysrgb&w=1200'); background-size: cover; background-position: center; background-blend-mode: overlay;">
+            <div class="spotlight-overlay">
+                <div class="container">
+                    <div class="spotlight-content">
+                        <span class="section-tag">Join Us</span>
+                        <h2>Be the <span class="highlight">Change</span></h2>
+                        <blockquote>
+                            <p>"Volunteering at Haven is the best decision I made. I've met amazing people and made a real impact in my community."</p>
+                            <cite>Sarah M., Volunteer since 2024</cite>
+                        </blockquote>
+                        <a href="enquiry.html" class="btn btn-primary">
+                            <i class="fas fa-hands-helping"></i> Join Our Team
+                        </a>
                     </div>
-                </div>
-
-                <div id="volunteerGrid" class="volunteer-grid">
-                </div>
-
-                <div class="volunteer-counter reveal">
-                    <p>We have <strong id="interestCount">0</strong> people ready to join our team this week.</p>
-                    <button id="expressInterestBtn" class="btn btn-primary">I'm Interested!</button>
                 </div>
             </div>
         </section>
 
+        <!-- LATEST NEWS -->
         <section class="latest-news">
             <div class="container">
                 <div class="section-header">
@@ -320,6 +317,7 @@
                     <p>Stay informed about our work and community initiatives.</p>
                 </div>
                 <ul class="news-list" id="newsList">
+                    <!-- Rendered dynamically by js/main.js from the newsItems data array. -->
                 </ul>
                 <noscript>
                     <ul class="news-list">
@@ -349,17 +347,19 @@
             </div>
         </section>
 
-        <section class="cta-band" style="background-image: linear-gradient(135deg, rgba(28,43,42,0.88), rgba(26,92,90,0.8)), url('https://images.pexels.com/photos/6995201/pexels-photo-6995201.jpeg?auto=compress&cs=tinysrgb&w=1200');">
+        <!-- DONATE CALL TO ACTION BAND -->
+        <section class="cta-band" style="background-image: linear-gradient(135deg, rgba(16,38,26,0.88), rgba(31,93,58,0.8)), url('https://images.pexels.com/photos/6995201/pexels-photo-6995201.jpeg?auto=compress&cs=tinysrgb&w=1200');">
             <div class="container">
                 <h2>One Parcel Feeds a Family for a Week</h2>
                 <p>Your donation or an hour of your time puts food on a table in Philippi, Khayelitsha and Mitchells Plain.</p>
                 <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary open-donate-modal"><i class="fas fa-heart"></i> Donate Now</a>
+                    <a href="contact.html" class="btn btn-primary donate-open"><i class="fas fa-heart"></i> Donate Now</a>
                     <a href="enquiry.html" class="btn btn-outline-light">Volunteer With Us</a>
                 </div>
             </div>
         </section>
 
+        <!-- PARTNERS and SUPPORTERS -->
         <section class="partners">
             <div class="container">
                 <div class="section-header">
@@ -389,64 +389,7 @@
 
     </main>
 
-    <div id="donationModal" class="modal" aria-hidden="true" role="dialog">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <button class="close-modal" aria-label="Close modal"><i class="fas fa-times"></i></button>
-            
-            <div class="modal-header">
-                <h2>Make a Donation</h2>
-                <p>Your contribution provides vital support to our community.</p>
-            </div>
-
-            <div class="donation-tabs">
-                <button class="tab-btn active" data-tab="money"><i class="fas fa-coins"></i> Money</button>
-                <button class="tab-btn" data-tab="food"><i class="fas fa-apple-alt"></i> Food & Goods</button>
-            </div>
-
-            <div id="tab-money" class="tab-content active">
-                <div class="amount-options">
-                    <button class="amount-btn" data-amount="100">R100</button>
-                    <button class="amount-btn" data-amount="250">R250</button>
-                    <button class="amount-btn" data-amount="500">R500</button>
-                </div>
-                <div class="form-group custom-amount-group">
-                    <label for="customAmount">Or enter custom amount (R)</label>
-                    <input type="number" id="customAmount" placeholder="Enter amount" min="10">
-                </div>
-                
-                <div id="moneyImpact" class="live-impact">Select an amount to see your impact...</div>
-                
-                <button class="btn btn-primary w-100" id="donateMoneyBtn">Donate Money</button>
-            </div>
-
-            <div id="tab-food" class="tab-content">
-                <div class="form-group">
-                    <label for="foodType">Type of Food/Goods</label>
-                    <select id="foodType">
-                        <option value="">-- Select type --</option>
-                        <option value="Canned Goods">Canned Goods (Beans, Soup, Veg)</option>
-                        <option value="Dry Staples">Dry Staples (Rice, Maize, Pasta)</option>
-                        <option value="Fresh Produce">Fresh Produce (Veg, Fruit)</option>
-                        <option value="Clothing/Other">Clothing/Other Essentials</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="foodQuantity">Quantity (e.g., 5 cans, 2 kg)</label>
-                    <input type="text" id="foodQuantity" placeholder="e.g., 10 items">
-                </div>
-                <div class="form-group">
-                    <label for="dropOffDate">Preferred Drop-off Date</label>
-                    <input type="date" id="dropOffDate">
-                </div>
-                
-                <button class="btn btn-primary w-100" id="donateFoodBtn">Arrange Drop-off</button>
-            </div>
-            
-            <div id="donationMessage" class="form-message" style="display: none;"></div>
-        </div>
-    </div>
-
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -495,6 +438,6 @@
 
     <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="JS/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

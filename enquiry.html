@@ -21,10 +21,11 @@
     <meta name="twitter:image" content="https://images.pexels.com/photos/6646877/pexels-photo-6646877.jpeg?auto=compress&cs=tinysrgb&w=1200">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- HEADER: Navigation Menu -->
     <header>
         <div class="container">
             <div class="logo">
@@ -32,14 +33,14 @@
                     <svg width="42" height="42" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="havenLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#2E2B5F"/>
-                                <stop offset="100%" stop-color="#1B1A2E"/>
+                                <stop offset="0%" stop-color="#1F5D3A"/>
+                                <stop offset="100%" stop-color="#10261A"/>
                             </linearGradient>
                         </defs>
                         <rect width="100" height="100" rx="22" fill="url(#havenLogoGrad)"/>
-                        <circle cx="42" cy="32" r="8" fill="#FF5A5F"/>
-                        <circle cx="58" cy="32" r="8" fill="#FF5A5F"/>
-                        <path d="M34,34 L50,52 L66,34 Z" fill="#FF5A5F"/>
+                        <circle cx="42" cy="32" r="8" fill="#1F8A4C"/>
+                        <circle cx="58" cy="32" r="8" fill="#1F8A4C"/>
+                        <path d="M34,34 L50,52 L66,34 Z" fill="#1F8A4C"/>
                         <ellipse cx="50" cy="56" rx="27" ry="6" fill="#FFFFFF"/>
                         <path d="M22,56 Q22,80 50,82 Q78,80 78,56 Z" fill="#FFFFFF"/>
                     </svg>
@@ -59,7 +60,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#" class="btn-donate open-donate-modal">
+                <a href="contact.html" class="btn-donate">
                     <i class="fas fa-heart"></i> <span>Donate</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle Navigation" aria-expanded="false">
@@ -69,46 +70,146 @@
         </div>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main>
 
+        <!-- PAGE HEADER -->
         <section class="page-header">
-            <div class="page-header-bg" style="background: linear-gradient(rgba(27,26,46,0.7), rgba(46,43,95,0.82)), url('https://images.pexels.com/photos/6646877/pexels-photo-6646877.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;"></div>
+            <div class="page-header-bg" style="background: linear-gradient(rgba(16,38,26,0.7), rgba(31,93,58,0.82)), url('https://images.pexels.com/photos/6646877/pexels-photo-6646877.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;"></div>
             <div class="container">
                 <h1>Become a Volunteer</h1>
                 <p>Make a difference in your community</p>
             </div>
         </section>
 
-        <section class="volunteer-finder" id="volunteer">
+        <!-- VOLUNTEER ROLES -->
+        <section class="roles">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Get Involved</span>
-                    <h2>Find Your Perfect Volunteer Role</h2>
-                    <p class="section-lead">Filter by your skills and availability to see where you can make the biggest impact.</p>
+                    <h2>Volunteer Roles</h2>
                 </div>
-
-                <div class="volunteer-filters reveal">
-                    <input type="text" id="roleSearch" class="search-input" placeholder="Search roles (e.g., 'driver')">
-                    
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">All Roles</button>
-                        <button class="filter-btn" data-filter="weekday">Weekdays</button>
-                        <button class="filter-btn" data-filter="weekend">Weekends</button>
-                        <button class="filter-btn" data-filter="physical">Physical</button>
-                        <button class="filter-btn" data-filter="admin">Admin</button>
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <i class="fas fa-boxes"></i>
+                        <h3>Food Packing</h3>
+                        <p>Pack food parcels for distribution to families in need.</p>
+                        <p><strong>When:</strong> Tuesday & Thursday, 9am – 12pm</p>
                     </div>
-                </div>
-
-                <div id="volunteerGrid" class="volunteer-grid">
-                </div>
-
-                <div class="volunteer-counter reveal">
-                    <p>We have <strong id="interestCount">0</strong> people ready to join our team this week.</p>
-                    <button id="expressInterestBtn" class="btn btn-primary">I'm Interested!</button>
+                    <div class="role-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Meal Serving</h3>
+                        <p>Serve hot meals to community members with warmth and dignity.</p>
+                        <p><strong>When:</strong> Monday & Wednesday, 11am – 2pm</p>
+                    </div>
+                    <div class="role-card">
+                        <i class="fas fa-truck"></i>
+                        <h3>Delivery Driver</h3>
+                        <p>Deliver food parcels to homes. Own vehicle required.</p>
+                        <p><strong>When:</strong> Flexible hours available</p>
+                    </div>
+                    <div class="role-card">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3>Admin Support</h3>
+                        <p>Assist with office tasks, coordination, and record-keeping.</p>
+                        <p><strong>When:</strong> Weekdays, 9am – 5pm</p>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- VOLUNTEER CONSOLE -->
+        <section class="vol-console-section" id="volunteerConsole">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Interactive Tool</span>
+                    <h2>Volunteer <span class="highlight">Console</span></h2>
+                    <p>Pick where and when you would like to help. Filter the open shifts, add them to your plan and send the plan straight into the sign-up form below.</p>
+                </div>
+
+                <div class="console-stats" aria-live="polite">
+                    <div class="console-stat"><strong id="statShown">0</strong><span>Shifts shown</span></div>
+                    <div class="console-stat"><strong id="statSpots">0</strong><span>Open spots</span></div>
+                    <div class="console-stat"><strong id="statPlan">0</strong><span>In your plan</span></div>
+                    <div class="console-stat"><strong id="statHours">0</strong><span>Hours / week</span></div>
+                </div>
+
+                <a href="#planPanel" class="btn btn-small console-jump"><i class="fas fa-clipboard-list"></i> Jump to my plan</a>
+
+                <div class="console-layout">
+                    <!-- LEFT: filters + shift list -->
+                    <div class="console-panel">
+                        <h3><i class="fas fa-sliders-h"></i> Find a Shift</h3>
+                        <div class="console-filters">
+                            <div class="form-group">
+                                <label for="consoleLocation">Location</label>
+                                <select id="consoleLocation">
+                                    <option value="all">All locations</option>
+                                    <option value="Philippi Hub">Philippi Hub</option>
+                                    <option value="Khayelitsha Satellite">Khayelitsha Satellite</option>
+                                    <option value="Mitchells Plain Satellite">Mitchells Plain Satellite</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="consoleRole">Role</label>
+                                <select id="consoleRole">
+                                    <option value="all">All roles</option>
+                                    <option value="packing">Food Packing</option>
+                                    <option value="serving">Meal Serving</option>
+                                    <option value="driving">Delivery Driving</option>
+                                    <option value="admin">Admin Support</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="consoleDay">Day</label>
+                                <select id="consoleDay">
+                                    <option value="all">Any day</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="consoleSort">Sort by</label>
+                                <select id="consoleSort">
+                                    <option value="day">Day of the week</option>
+                                    <option value="spots">Most spots left</option>
+                                    <option value="hours">Longest shift</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="consoleSearch">Search</label>
+                            <input type="text" id="consoleSearch" placeholder="e.g. serving, Friday, Khayelitsha">
+                        </div>
+                        <button type="button" class="btn btn-small" id="consoleReset"><i class="fas fa-undo"></i> Reset filters</button>
+
+                        <div id="shiftList" class="shift-list"></div>
+                        <p id="shiftEmpty" class="console-empty" style="display:none;">No shifts match your filters. Try a different location, role or day.</p>
+                    </div>
+
+                    <!-- RIGHT: my plan -->
+                    <div class="console-panel plan-panel" id="planPanel">
+                        <h3><i class="fas fa-clipboard-list"></i> My Volunteer Plan</h3>
+                        <div id="planMessage" class="console-message" style="display:none;" role="status"></div>
+                        <ul id="planList" class="plan-list"></ul>
+                        <p id="planEmpty" class="console-empty">Your plan is empty. Add a shift from the list.</p>
+                        <div id="planSummary" class="plan-summary"></div>
+                        <div class="plan-buttons">
+                            <button type="button" class="btn btn-primary" id="btnUsePlan"><i class="fas fa-paper-plane"></i> Use plan in sign-up form</button>
+                            <button type="button" class="btn btn-small" id="btnSavePlan"><i class="fas fa-save"></i> Save plan</button>
+                            <button type="button" class="btn btn-small" id="btnClearPlan"><i class="fas fa-trash"></i> Clear plan</button>
+                        </div>
+                        <noscript><p>The volunteer console needs JavaScript. Please use the sign-up form below instead.</p></noscript>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLUNTEER TESTIMONIALS -->
         <section class="testimonials">
             <div class="container">
                 <div class="section-header">
@@ -128,6 +229,7 @@
             </div>
         </section>
 
+        <!-- VOLUNTEER SIGN-UP FORM -->
         <section class="signup-section">
             <div class="container">
                 <div class="section-header">
@@ -135,8 +237,10 @@
                     <h2>Join Our Volunteer Team</h2>
                 </div>
 
+                <!-- Volunteer Form -->
                 <form id="volunteerForm" novalidate>
 
+                    <!-- Personal Information -->
                     <fieldset>
                         <legend><i class="fas fa-user"></i> Personal Information</legend>
 
@@ -161,6 +265,7 @@
                         </div>
                     </fieldset>
 
+                    <!-- Volunteer Preferences -->
                     <fieldset>
                         <legend><i class="fas fa-tasks"></i> Volunteer Preferences</legend>
 
@@ -182,4 +287,91 @@
                                 <label><input type="checkbox" name="availability" value="Tuesday"> Tuesday</label>
                                 <label><input type="checkbox" name="availability" value="Wednesday"> Wednesday</label>
                                 <label><input type="checkbox" name="availability" value="Thursday"> Thursday</label>
-                               
+                                <label><input type="checkbox" name="availability" value="Friday"> Friday</label>
+                                <label><input type="checkbox" name="availability" value="Saturday"> Saturday</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="skills">Special Skills</label>
+                            <textarea id="skills" name="skills" rows="3" placeholder="Any relevant skills or experience..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- How Did You Hear? -->
+                    <fieldset>
+                        <legend><i class="fas fa-bullhorn"></i> How Did You Hear About Us? *</legend>
+                        <div class="radio-group">
+                            <label><input type="radio" name="hearAbout" value="social" required> Social Media</label>
+                            <label><input type="radio" name="hearAbout" value="friend"> Friend/Family</label>
+                            <label><input type="radio" name="hearAbout" value="flyer"> Flyer/Poster</label>
+                            <label><input type="radio" name="hearAbout" value="other"> Other</label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Submit -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+
+                    <p class="form-note">* Required fields</p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Haven Community Food Bank</h4>
+                    <p>Nourishing our neighbours with dignity since 2015.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Get Help</a></li>
+                        <li><a href="enquiry.html">Volunteer</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Rd, Philippi, 7785</li>
+                        <li><i class="fas fa-phone"></i> (021) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@havenfoodbank.org</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Updated</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Haven Community Food Bank. All Rights Reserved.</p>
+                <p>Created for Web Development (WEDE5020) PoE</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
