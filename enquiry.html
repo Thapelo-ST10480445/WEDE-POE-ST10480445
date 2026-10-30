@@ -25,7 +25,6 @@
 </head>
 <body>
 
-    <!-- HEADER: Navigation Menu -->
     <header>
         <div class="container">
             <div class="logo">
@@ -60,7 +59,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="contact.html" class="btn-donate">
+                <a href="#" class="btn-donate open-donate-modal">
                     <i class="fas fa-heart"></i> <span>Donate</span>
                 </a>
                 <button class="menu-toggle" aria-label="Toggle Navigation" aria-expanded="false">
@@ -70,10 +69,8 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main>
 
-        <!-- PAGE HEADER -->
         <section class="page-header">
             <div class="page-header-bg" style="background: linear-gradient(rgba(27,26,46,0.7), rgba(46,43,95,0.82)), url('https://images.pexels.com/photos/6646877/pexels-photo-6646877.jpeg?auto=compress&cs=tinysrgb&w=600'); background-size: cover; background-position: center;"></div>
             <div class="container">
@@ -82,43 +79,36 @@
             </div>
         </section>
 
-        <!-- VOLUNTEER ROLES -->
-        <section class="roles">
+        <section class="volunteer-finder" id="volunteer">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Get Involved</span>
-                    <h2>Volunteer Roles</h2>
+                    <h2>Find Your Perfect Volunteer Role</h2>
+                    <p class="section-lead">Filter by your skills and availability to see where you can make the biggest impact.</p>
                 </div>
-                <div class="roles-grid">
-                    <div class="role-card">
-                        <i class="fas fa-boxes"></i>
-                        <h3>Food Packing</h3>
-                        <p>Pack food parcels for distribution to families in need.</p>
-                        <p><strong>When:</strong> Tuesday & Thursday, 9am – 12pm</p>
+
+                <div class="volunteer-filters reveal">
+                    <input type="text" id="roleSearch" class="search-input" placeholder="Search roles (e.g., 'driver')">
+                    
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Roles</button>
+                        <button class="filter-btn" data-filter="weekday">Weekdays</button>
+                        <button class="filter-btn" data-filter="weekend">Weekends</button>
+                        <button class="filter-btn" data-filter="physical">Physical</button>
+                        <button class="filter-btn" data-filter="admin">Admin</button>
                     </div>
-                    <div class="role-card">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Meal Serving</h3>
-                        <p>Serve hot meals to community members with warmth and dignity.</p>
-                        <p><strong>When:</strong> Monday & Wednesday, 11am – 2pm</p>
-                    </div>
-                    <div class="role-card">
-                        <i class="fas fa-truck"></i>
-                        <h3>Delivery Driver</h3>
-                        <p>Deliver food parcels to homes. Own vehicle required.</p>
-                        <p><strong>When:</strong> Flexible hours available</p>
-                    </div>
-                    <div class="role-card">
-                        <i class="fas fa-clipboard-list"></i>
-                        <h3>Admin Support</h3>
-                        <p>Assist with office tasks, coordination, and record-keeping.</p>
-                        <p><strong>When:</strong> Weekdays, 9am – 5pm</p>
-                    </div>
+                </div>
+
+                <div id="volunteerGrid" class="volunteer-grid">
+                </div>
+
+                <div class="volunteer-counter reveal">
+                    <p>We have <strong id="interestCount">0</strong> people ready to join our team this week.</p>
+                    <button id="expressInterestBtn" class="btn btn-primary">I'm Interested!</button>
                 </div>
             </div>
         </section>
 
-        <!-- VOLUNTEER TESTIMONIALS -->
         <section class="testimonials">
             <div class="container">
                 <div class="section-header">
@@ -138,7 +128,6 @@
             </div>
         </section>
 
-        <!-- VOLUNTEER SIGN-UP FORM -->
         <section class="signup-section">
             <div class="container">
                 <div class="section-header">
@@ -146,10 +135,8 @@
                     <h2>Join Our Volunteer Team</h2>
                 </div>
 
-                <!-- Volunteer Form -->
                 <form id="volunteerForm" novalidate>
 
-                    <!-- Personal Information -->
                     <fieldset>
                         <legend><i class="fas fa-user"></i> Personal Information</legend>
 
@@ -174,7 +161,6 @@
                         </div>
                     </fieldset>
 
-                    <!-- Volunteer Preferences -->
                     <fieldset>
                         <legend><i class="fas fa-tasks"></i> Volunteer Preferences</legend>
 
@@ -196,91 +182,4 @@
                                 <label><input type="checkbox" name="availability" value="Tuesday"> Tuesday</label>
                                 <label><input type="checkbox" name="availability" value="Wednesday"> Wednesday</label>
                                 <label><input type="checkbox" name="availability" value="Thursday"> Thursday</label>
-                                <label><input type="checkbox" name="availability" value="Friday"> Friday</label>
-                                <label><input type="checkbox" name="availability" value="Saturday"> Saturday</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="skills">Special Skills</label>
-                            <textarea id="skills" name="skills" rows="3" placeholder="Any relevant skills or experience..."></textarea>
-                        </div>
-                    </fieldset>
-
-                    <!-- How Did You Hear? -->
-                    <fieldset>
-                        <legend><i class="fas fa-bullhorn"></i> How Did You Hear About Us? *</legend>
-                        <div class="radio-group">
-                            <label><input type="radio" name="hearAbout" value="social" required> Social Media</label>
-                            <label><input type="radio" name="hearAbout" value="friend"> Friend/Family</label>
-                            <label><input type="radio" name="hearAbout" value="flyer"> Flyer/Poster</label>
-                            <label><input type="radio" name="hearAbout" value="other"> Other</label>
-                        </div>
-                    </fieldset>
-
-                    <!-- Submit -->
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Submit Application
-                        </button>
-                    </div>
-
-                    <p class="form-note">* Required fields</p>
-                </form>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Haven Community Food Bank</h4>
-                    <p>Nourishing our neighbours with dignity since 2015.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Get Help</a></li>
-                        <li><a href="enquiry.html">Volunteer</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Us</h4>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Rd, Philippi, 7785</li>
-                        <li><i class="fas fa-phone"></i> (021) 123-4567</li>
-                        <li><i class="fas fa-envelope"></i> info@havenfoodbank.org</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Stay Updated</h4>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email" required>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Haven Community Food Bank. All Rights Reserved.</p>
-                <p>Created for Web Development (WEDE5020) PoE</p>
-            </div>
-        </div>
-    </footer>
-
-    <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-
-    <script src="JS/main.js"></script>
-</body>
-</html>
+                               
