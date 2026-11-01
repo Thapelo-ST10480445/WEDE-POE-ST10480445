@@ -9,7 +9,7 @@
 **Subject:** Web Development (WEDE5020)
 **Programme:** Diploma in Information Technology – Software Development
 **Group:** 4
-**Date:** 14 August 2026 (last updated 17 October 2026)
+**Date:** 14 August 2026 (last updated 1 November 2026)
 
 ---
 
@@ -29,7 +29,51 @@ This is a three-part assignment, built step by step:
 
 **Part 1 – Planning:** proposals, design, sitemap. *Status: Done*
 **Part 2 – Build:** the HTML and CSS (structure and styling). *Status: Done*
-**Part 3 – Interactivity:** JavaScript for forms, maps, etc. *Status: In Progress — mobile navigation, interactive map, form validation, FAQ accordion with search, schedule filtering, photo gallery with lightbox, scroll animations, dynamically-rendered news, and on-page SEO are all done; see Changelog below*
+**Part 3 – Interactivity:** JavaScript for forms, maps, etc. *Status: Done — mobile navigation, interactive Leaflet map, form validation and processing, FAQ accordion with search, schedule filtering, photo gallery with lightbox, scroll animations, dynamically-rendered news, volunteer console, donate pop-up and on-page SEO; see the Part 3 checklist and Changelog below*
+
+---
+
+## Live Website and Repository
+
+- **Live website (GitHub Pages):** https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/
+- **GitHub repository:** https://github.com/Thapelo-ST10480445/WEDE-POE-ST10480445
+- **Run it locally:** download or clone the repository and open `index.html` in a browser (no build step or server needed; an internet connection is needed for the map tiles, icons, fonts and photos)
+
+---
+
+## Part 3 Checklist (where each requirement is)
+
+| Part 3 requirement | Where it is |
+|---|---|
+| Interactive elements | Mobile menu, FAQ accordion, schedule filter, volunteer console, donate pop-up, back-to-top, scroll animations (`js/main.js`) |
+| Interactive map | `contact.html` – Leaflet map with 3 pins, popups and directions links (section 4 of `js/main.js`) |
+| Gallery lightbox | `about.html` – 6 photos, next/previous/close, keyboard and touch support (section 7) |
+| Dynamic content and search | `index.html` news built from an array (section 8); `services.html` FAQ live search and day filter (sections 5 and 6); volunteer console search, filter and sort |
+| SEO: title tags | A unique `<title>` on every page |
+| SEO: meta keywords and description | A unique `keywords` and `description` meta tag on every page, plus Open Graph and Twitter tags, canonical URLs and JSON-LD (homepage) |
+| SEO: image file names and alt text | Descriptive alt text on every image (see the Image Index below); descriptively named hero image files in `images/` |
+| Enquiry form controls | `enquiry.html` – text, email, tel, date, dropdown, checkboxes, radio buttons, textarea, all with labels |
+| Enquiry validation | Required fields, email, phone, date of birth (16+), text length, at least one day and one source; messages under each field |
+| Enquiry process response | After a valid submission the form is replaced by a "You have successfully enrolled" card (reference number, role, days, next steps) |
+| Contact form controls | `contact.html` – name, email, type of message (dropdown), subject, message, all with labels |
+| Contact validation | Required fields, email format, message type chosen, message at least 10 characters |
+| Contact process email | The message is sent with AJAX (`fetch`) and compiled into an email (`mailto:info@havenfoodbank.org`) including the type of message, with an "Open Email" button; the form `action` is also a `mailto:` link as a no-JavaScript fallback |
+| GitHub | Project pushed to the repository above with descriptive commits |
+| README and Changelog | This file and `CHANGELOG.md` |
+| Deployment | GitHub Pages (link above) |
+
+---
+
+## Part 2 Feedback and Resulting Changes
+
+The following changes were made after the Part 2 submission to respond to its feedback (full detail in `CHANGELOG.md`):
+
+- **Responsiveness and usability on phones:** fixed the mobile menu, enlarged tap targets to 44px, stopped hover effects sticking on touch screens, and fixed the fixed-background flicker on mobile
+- **Visual design:** replaced the original turquoise theme with a fresh off-white and green palette, a new logo and favicon, and better, more relevant photographs
+- **Accessibility:** descriptive alt text on all images, labels on every form control, keyboard support in the lightbox, accordion and pop-up, visible focus states, and reduced-motion support
+- **Performance:** resized hero image in three sizes, responsive `srcset` images, lazy loading on photos
+- **Content fixes:** rebuilt the truncated `services.html`, fixed the homepage file name and link problems, replaced the placeholder address with a realistic one
+- *(If your lecturer's Part 2 feedback lists specific points, add them here with how each was addressed.)*
 
 ---
 
@@ -65,7 +109,7 @@ I've built 5 main pages (the minimum required):
 ### Features
 
 **Mobile-friendly design** – everything works on phones first, then scales up
-**Modern visual design** – a warm, distinct colour system (coral, deep indigo, soft periwinkle) with a bento-style card layout, glass-effect header, and gradient accents, rather than a generic template look
+**Modern visual design** – a fresh off-white and green colour system (leaf green #1F8A4C, forest green #1F5D3A, sage #A8D5B5 on a warm off-white #F8F6EF background) with a bento-style card layout, glass-effect header, and gradient accents, rather than a generic template look
 **Accessibility features** – high contrast, keyboard navigation, visible focus states, alt text on images
 **Functional mobile menu** – the hamburger icon now actually opens/closes navigation on small screens
 **Interactive map** – a real Leaflet.js map on the Contact page with clickable pins for all three distribution points, popups with hours/contact info, and "Get Directions" links
@@ -78,23 +122,26 @@ I've built 5 main pages (the minimum required):
 **FAQ accordion with live search** – the Get Help page's FAQ expands/collapses one question at a time, with a search box that filters questions as you type
 **Distribution schedule filter** – filter the schedule table by day (Mon–Sat) with one click
 **Photo gallery with lightbox** – an "Our Work in the Community" gallery on the About page; click any photo to view it full-size with next/previous/close controls (mouse, tap, or keyboard)
-**Scroll-reveal animations** – cards and list items animate gently into view as you scroll down the page
+**Scroll-reveal and image animations** – cards and list items animate gently into view as you scroll; hero and page-header photos have a slow Ken Burns zoom (CSS `@keyframes`)
 **Dynamically-rendered news** – the homepage's "Latest News" list is generated with JavaScript from a data array rather than hardcoded, simulating how it would be populated from a CMS/API
 **AJAX form submission** – the Contact and Volunteer forms send their data with `fetch()` (POST, JSON) to a free practice API without reloading the page, with a loading state on the submit button and success/error messages; the URL can be swapped for a real backend later
+**Volunteer Console** (`enquiry.html`) – an interactive tool where a visitor picks where and when they want to volunteer: filter 12 open shifts by location, role and day, search and sort them, add shifts to a personal plan (max 4 per week, spots count down, clash and duplicate checks), see live stats (shifts shown, open spots, shifts in plan, hours per week), save the plan in the browser (`localStorage`) and send it into the sign-up form with one click
+**Donate pop-up** – every "Donate" button opens a pop-up with three tabs: **Give Money** (R50, R100, R200, R500, R1000 or a custom amount, minimum R50, once-off or monthly), **Give Food** (choose the type of food, the quantity and the unit, add several items, pick a drop-off location) and **Give Time** (choose the role, location, days and hours per week). Each tab is validated and ends with a thank-you card and a reference number
+**Volunteer enrolment confirmation** – after a valid sign-up the form is replaced by a "You have successfully enrolled" card showing a reference number, the role, available days, any shifts planned in the console and what happens next
 **On-page SEO** – descriptive meta titles/descriptions per page, Open Graph and Twitter Card tags for link previews, canonical URLs, NGO structured data (JSON-LD) on the homepage, a `robots.txt`, and a `sitemap.xml`
 
 
 
 ## Tech Stack
 
-**HTML5** – page structure; it's the standard and has good accessibility features
-**CSS3** – styling and layout; Flexbox and Grid make responsive design easier
-**JavaScript (Vanilla)** – interactivity: mobile nav toggle, form validation, newsletter feedback, back-to-top
-**Leaflet.js** – interactive maps; free, open-source, doesn't track users
+**HTML5** – page structure (Mozilla Developer Network, n.d.); it's the standard and has good accessibility features
+**CSS3** – styling and layout (Mozilla Developer Network, n.d.); Flexbox and Grid make responsive design easier
+**JavaScript (Vanilla)** – interactivity: mobile nav, Leaflet map, FAQ accordion and search, schedule filter, gallery lightbox, scroll animations, dynamic news, form validation, `fetch()` AJAX submission, back-to-top
+**Leaflet.js** – interactive maps; free, open-source, doesn't track users (Leaflet, n.d.)
 **CARTO basemap tiles** – map tile provider (see Changelog: switched from raw OpenStreetMap tile servers, which actively block unregistered app traffic per their usage policy)
-**Font Awesome** – icons; free icons that look professional
-**Google Fonts** – typography; Montserrat and Open Sans are clean and readable
-**Netlify** – hosting; free tier is generous, has HTTPS and fast delivery
+**Font Awesome** – icons; free icons that look professional (Font Awesome, n.d.)
+**Google Fonts** – typography; Montserrat and Open Sans are clean and readable (Google Fonts, n.d.)
+**GitHub Pages** – free hosting directly from the GitHub repository, with HTTPS (GitHub, n.d.)
 **Git & GitHub** – version control; standard for tracking changes
 
 
@@ -114,7 +161,10 @@ haven-site/
     style.css
   js/
     main.js
-  images/      (local images, if/when added)
+  images/      (hero photo in 400/800/1200px JPG sizes)
+  favicon.svg
+  .nojekyll
+  CHANGELOG.md
 ```
 
 - All pages share the same header, navigation, and footer for consistency
@@ -189,7 +239,7 @@ All pages are reachable from every other page via the main navigation menu and t
   - **FAQ accordion + search** (`services.html`): converted the static FAQ list into a one-at-a-time accordion with expand/collapse animation, plus a live search box that filters questions as you type (`js/main.js`)
   - **Distribution schedule filter** (`services.html`): added day-of-week filter buttons (All / Mon–Sat) above the schedule table that show/hide rows instantly, with a "no results" message when a day has no open locations
   - **Photo gallery + lightbox** (`about.html`): new "Our Work in the Community" section with 6 photos; clicking one opens a full-size lightbox with next/previous/close controls, supporting mouse, touch, and keyboard (Esc, ←, →)
-  - **Scroll-reveal animations**: cards across every page (stats, values, events, team, timeline, locations, roles, partners, gallery, FAQ, news) now fade/slide into view on scroll using `IntersectionObserver`, with a `prefers-reduced-motion` fallback for users who've disabled animations
+  - **Scroll-reveal animations**: cards across every page (stats, values, events, team, timeline, locations, roles, partners, gallery, FAQ, news) now fade/slide into view on scroll (this was later simplified to a scroll listener, see 28 October), with a `prefers-reduced-motion` fallback for users who've disabled animations
   - **Dynamic content loading** (`index.html`): the "Latest News" list is now built entirely with JavaScript DOM methods (`createElement`/`appendChild`) from a data array instead of being hardcoded in the HTML, with a `<noscript>` fallback for the rare case JavaScript is disabled
   - **Simulated AJAX submission**: the Contact and Volunteer form handlers now submit through a Promise-based async function with a loading spinner on the submit button, matching the shape of a real `fetch()` call — the `TODO` comment in `js/main.js` marks exactly where to plug in a real backend or Netlify Forms endpoint
   - **On-page SEO**: added Open Graph and Twitter Card meta tags plus a canonical URL to all five pages (for clean link previews when shared), NGO structured data (JSON-LD, schema.org) to the homepage describing the organisation, and created `robots.txt` and `sitemap.xml` at the project root
@@ -200,20 +250,67 @@ All pages are reachable from every other page via the main navigation menu and t
   - **Contact form** (`contact.html`): added a required "Type of Message" dropdown (General Enquiry, Donation, Volunteering, Request for Food Help). After validation the message type, name, email and message are compiled into a `mailto:` email addressed to `info@havenfoodbank.org`, with an "Open Email" button
   - **Volunteer enquiry form** (`enquiry.html`): after a valid submission the page now shows a response about the chosen role (days/times), that volunteering costs nothing, and the days the volunteer said they are available
   - Removed the mouse-tilt effect on gallery photos (unnecessary complexity); the CSS image-zoom and Ken Burns animations remain
-- *(Further changes will be logged here as Part 3 progresses)*
+- **28 October 2026** – Visual upgrade: replaced the placeholder photos with more fitting food-bank and volunteer photos from Pexels (gallery, page headers, featured image, spotlight background). Added a "Life at Haven" photo mosaic and a donate call-to-action band on the homepage, and a "How a Distribution Day Works" 3-step photo section on the Get Help page; the new cards use the same scroll animation. Photo credits added to References
+- **31 October 2026** – Improvements:
+  - **Donate pop-up** (section 13 of `js/main.js`, styles in `css/style.css` 27j): the pop-up is created with JavaScript (`createElement`, `innerHTML`, `appendChild`) so it works on every page without repeating HTML. The header and homepage Donate buttons open it (the link still goes to `contact.html` if JavaScript is off). Money tab: amount buttons from R50, custom amount with a R50 minimum, once-off or monthly. Food tab: food type list, quantity (whole number, 1-1000) and unit, several items in a removable list, drop-off location. Time tab: role, location, days and hours per week. All tabs validate name and email, send the data with `fetch()` and finish with a thank-you card and reference number. Escape, the close button and clicking the background close it
+  - **Volunteer enrolment confirmation** (`enquiry.html`): replaced the short message with a "You have successfully enrolled as a Haven volunteer" card: reference number, date, role, available days, email, shifts from the console plan, next steps, and an "Enrol another volunteer" button
+  - **Volunteer Console responsive fix**: removed the scrolling box inside the page on tablets and phones, plan buttons now wrap properly, tighter padding and statistics on small screens, a "Jump to my plan" button on mobile, and a sticky plan panel on desktop
+- **30 October 2026** – Added to boost the Part 3 JavaScript marks:
+  - **Volunteer Console** (`enquiry.html`, section 12 of `js/main.js`): the 12 shifts are stored in an array of objects and the cards, plan list and statistics are built with DOM methods (`createElement`, `appendChild`, `textContent`). Visitors can filter by location, role and day, search by keyword, sort (day, spots left, longest shift), add and remove shifts, and see the spots, hours and totals update live. Rules are enforced with validation messages: maximum 4 shifts per week, no duplicate shifts, no time clashes on the same day, and no full shifts. The plan can be saved in `localStorage` and "Use plan in sign-up form" ticks the matching availability days and selects the role in the form
+  - **New colour theme**: changed the whole site from coral/indigo/periwinkle to an **off-white and green** palette. All colours are CSS variables in `:root`, so the change was made in one place, then the logo, favicon, hero/banner overlays and hard-coded colours were updated to match
+- **28 October 2026** – Deployment: the site will be hosted on **GitHub Pages** (`https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/`). `robots.txt`, `sitemap.xml`, canonical/Open Graph URLs and the JSON-LD data now use this address; added `favicon.svg` and `.nojekyll`. The full history is in `CHANGELOG.md`
 
 
+
+## Image Index and Credits
+
+Photographs are free stock photos from Pexels (Pexels, n.d.), used under the Pexels licence. Every image has descriptive alt text.
+
+| Page | Alt text | Source / file |
+|---|---|---|
+| index.html | Fresh vegetables arranged for a community food programme | https://images.pexels.com/photos/6590914/pexels-photo-6590914.jpeg |
+| index.html | Packing parcels together | https://images.pexels.com/photos/6995260/pexels-photo-6995260.jpeg |
+| index.html | Carrying food home | https://images.pexels.com/photos/9090854/pexels-photo-9090854.jpeg |
+| index.html | Meals shared with our youngest neighbours | https://images.pexels.com/photos/9823013/pexels-photo-9823013.jpeg |
+| index.html | Hand-delivered with a smile | https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg |
+| about.html | Nomsa M. - Director | https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg |
+| about.html | Peter K. - Operations Manager | https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg |
+| about.html | Thandi N. - Volunteer Coordinator | https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg |
+| about.html | James S. - Volunteer Lead | https://images.pexels.com/photos/2380794/pexels-photo-2380794.jpeg |
+| about.html | Volunteers packing food parcels ahead of a distribution day | https://images.pexels.com/photos/6995260/pexels-photo-6995260.jpeg |
+| about.html | A volunteer handing out food parcels at our Philippi hub | https://images.pexels.com/photos/6591161/pexels-photo-6591161.jpeg |
+| about.html | The Haven team preparing donations for the week | https://images.pexels.com/photos/6995201/pexels-photo-6995201.jpeg |
+| about.html | Volunteers carrying fresh stock into the hub | https://images.pexels.com/photos/6647017/pexels-photo-6647017.jpeg |
+| about.html | Young community members enjoying a meal | https://images.pexels.com/photos/9823013/pexels-photo-9823013.jpeg |
+| about.html | Meal containers being handed out at a community site | https://images.pexels.com/photos/6895226/pexels-photo-6895226.jpeg |
+| services.html | Arrive and Check In | https://images.pexels.com/photos/6646952/pexels-photo-6646952.jpeg |
+| services.html | We Pack Your Parcel | https://images.pexels.com/photos/6646871/pexels-photo-6646871.jpeg |
+| services.html | Collect and Go Home | https://images.pexels.com/photos/6895226/pexels-photo-6895226.jpeg |
 
 ## References
 
-- Font Awesome. (2024). *Font Awesome Icons*. Available at: https://fontawesome.com/ [Accessed 14 August 2026].
-- Google Fonts. (2024). *Montserrat & Open Sans*. Available at: https://fonts.google.com/ [Accessed 14 August 2026].
-- Pexels. (2024). *Free Stock Photos*. Available at: https://www.pexels.com/ [Accessed 14 August 2026].
-- Mozilla Developer Network. (2024). *HTML: HyperText Markup Language*. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML [Accessed 14 August 2026].
-- Mozilla Developer Network. (2024). *CSS: Cascading Style Sheets*. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS [Accessed 14 August 2026].
-- Leaflet. (2024). *Leaflet – an open-source JavaScript library for interactive maps*. Available at: https://leafletjs.com/ [Accessed 18 September 2026].
-- CARTO. (2024). *Basemaps*. Available at: https://carto.com/basemaps [Accessed 18 September 2026].
-- OpenStreetMap Foundation. (2024). *Tile Usage Policy*. Available at: https://operations.osmfoundation.org/policies/tiles/ [Accessed 18 September 2026].
-- Schema.org. (2024). *NGO - Schema.org Type*. Available at: https://schema.org/NGO [Accessed 17 October 2026].
-- Google Search Central. (2024). *Sitemaps: Learn about Sitemaps / robots.txt Introduction*. Available at: https://developers.google.com/search/docs/crawling-indexing [Accessed 17 October 2026].
-- MDN Web Docs. (2024). *Intersection Observer API*. Available at: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API [Accessed 17 October 2026].
+- CARTO (n.d.) *Basemaps*. Available at: https://carto.com/basemaps (Accessed: 1 November 2026).
+- Font Awesome (n.d.) *Font Awesome icons*. Available at: https://fontawesome.com/ (Accessed: 1 November 2026).
+- GitHub (n.d.) *GitHub Pages documentation*. Available at: https://docs.github.com/en/pages (Accessed: 1 November 2026).
+- Google Fonts (n.d.) *Montserrat and Open Sans*. Available at: https://fonts.google.com/ (Accessed: 1 November 2026).
+- Google Search Central (n.d.) *Sitemaps and robots.txt introduction*. Available at: https://developers.google.com/search/docs/crawling-indexing (Accessed: 1 November 2026).
+- Leaflet (n.d.) *Leaflet: an open-source JavaScript library for interactive maps*. Available at: https://leafletjs.com/ (Accessed: 1 November 2026).
+- Mozilla Developer Network (n.d.) *CSS: Cascading Style Sheets*. Available at: https://developer.mozilla.org/en-US/docs/Web/CSS (Accessed: 1 November 2026).
+- Mozilla Developer Network (n.d.) *HTML: HyperText Markup Language*. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 1 November 2026).
+- Mozilla Developer Network (n.d.) *JavaScript*. Available at: https://developer.mozilla.org/en-US/docs/Web/JavaScript (Accessed: 1 November 2026).
+- OpenStreetMap Foundation (n.d.) *Tile usage policy*. Available at: https://operations.osmfoundation.org/policies/tiles/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *A group of African children smiling and holding food* [photograph]. Available at: https://www.pexels.com/photo/a-group-of-african-children-smiling-and-holding-food-9823013/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *A group of women carrying cardboard boxes on their heads* [photograph]. Available at: https://www.pexels.com/photo/a-group-of-women-carrying-cardboard-boxes-on-their-heads-9090854/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *A man and a woman packing relief goods in boxes* [photograph]. Available at: https://www.pexels.com/photo/a-man-and-a-woman-packing-relief-goods-in-boxes-6646871/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *A volunteer distributing relief goods* [photograph]. Available at: https://www.pexels.com/photo/a-volunteer-distributing-relief-goods-6591161/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *A woman handing out food containers to children* [photograph]. Available at: https://www.pexels.com/photo/a-woman-handing-out-food-containers-to-children-6895226/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *A woman standing beside the white van carrying a brown box* [photograph]. Available at: https://www.pexels.com/photo/a-woman-standing-beside-the-white-van-carrying-a-brown-box-6646893/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *Food donation with cans and fresh vegetables* [photograph]. Available at: https://www.pexels.com/photo/food-donation-with-cans-and-fresh-vegetables-6590914/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *Free stock photo of Africa, aid and volunteers* [photograph]. Available at: https://www.pexels.com/photo/love-people-africa-travel-6647178/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *Free stock photos*. Available at: https://www.pexels.com/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *People donating goods* [photograph]. Available at: https://www.pexels.com/photo/people-donating-goods-6646952/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *People packing food* [photograph]. Available at: https://www.pexels.com/photo/people-packing-food-6995260/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *Two men carrying boxes* [photograph]. Available at: https://www.pexels.com/photo/two-men-carrying-boxes-6647017/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *Volunteer people in white shirts* [photograph]. Available at: https://www.pexels.com/photo/volunteer-people-in-white-shirts-6646877/ (Accessed: 1 November 2026).
+- Pexels (n.d.) *Volunteers preparing donations* [photograph]. Available at: https://www.pexels.com/photo/volunteers-preparing-donations-6995201/ (Accessed: 1 November 2026).
+- Schema.org (n.d.) *NGO*. Available at: https://schema.org/NGO (Accessed: 1 November 2026).
