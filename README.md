@@ -173,8 +173,6 @@ haven-site/
   js/
     main.js
   images/      (hero photo in 400/800/1200px JPG sizes)
-  favicon.svg
-  .nojekyll
   CHANGELOG.md
 ```
 
