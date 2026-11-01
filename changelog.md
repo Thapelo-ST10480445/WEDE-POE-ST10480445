@@ -92,6 +92,14 @@ A new interactive section above the sign-up form where volunteers choose where, 
 - Added `robots.txt` and `sitemap.xml` in the project root
 - Responsive image sizes and descriptive `alt` text for faster, more accessible pages
 
+### 4b. Additional Requests: robots.txt, Sitemap, Page Speed, Security (updated 1 November 2026)
+
+- **robots.txt:** allows all crawlers and links to the sitemap; now commented
+- **sitemap.xml:** all 5 pages with updated last-modified date (1 November 2026), change frequency and priority, on the GitHub Pages address
+- **Page speed:** `defer` on all scripts, `preconnect` to Google Fonts, Font Awesome and the photo host (and unpkg on the contact page), preloaded hero image on the home page, theme colour meta tag, resized hero images, lazy-loaded photos
+- **Security:** Content Security Policy meta tag (only the sites the page really needs), referrer policy, `rel="noopener noreferrer"` on links that open new tabs, hidden honeypot field on the contact and volunteer forms (checked in JavaScript), input validation, safe text output with `textContent`, encoded `mailto:` content
+- **Bug fix:** removed stray favicon text from the `<head>` of all five pages, which had pushed the meta tags into the page body
+
 ### 5. Mobile and Touch Fixes (12 October 2026)
 
 - Hamburger button enlarged to a 44x44px tap target

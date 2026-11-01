@@ -1,0 +1,7 @@
+# robots.txt for Haven Community Food Bank
+# Tells search engine crawlers which pages they may visit.
+User-agent: *
+Allow: /
+
+# Help crawlers find every page
+Sitemap: https://thapelo-st10480445.github.io/WEDE-POE-ST10480445/sitemap.xml

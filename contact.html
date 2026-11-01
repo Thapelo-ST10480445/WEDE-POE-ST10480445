@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Security: Content Security Policy limits where scripts, styles and data can come from -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://jsonplaceholder.typicode.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#1F5D3A">
+    <!-- Page speed: open early connections to the services the page uses -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <meta name="description" content="Contact Haven Community Food Bank. Get in touch for enquiries, volunteer opportunities, or donations.">
     <meta name="keywords" content="contact, food bank, Cape Town, phone, email, address, map">
     <meta name="author" content="Haven Community Food Bank">
@@ -131,6 +141,7 @@
 
                 <!-- Contact Form -->
                 <form id="contactForm" action="mailto:info@havenfoodbank.org" method="post" enctype="text/plain" novalidate>
+                    <div class="hp-field" aria-hidden="true"><label for="hpContact">Leave this field empty</label><input type="text" id="hpContact" name="website" tabindex="-1" autocomplete="off"></div>
                     <div class="form-group">
                         <label for="contactName">Your Name *</label>
                         <input type="text" id="contactName" name="contactName" required placeholder="e.g., Thandi Nkosi">
@@ -294,7 +305,7 @@
 
     <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

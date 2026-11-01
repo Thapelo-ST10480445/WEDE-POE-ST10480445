@@ -2062,3 +2062,6 @@ footer {
     -webkit-background-clip: text;
     background-clip: text;
 }
+
+/* Security: hidden honeypot field to catch spam bots */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

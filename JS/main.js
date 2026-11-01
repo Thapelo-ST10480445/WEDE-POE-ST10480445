@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 place.address + '<br>' +
                 place.hours + '<br>' +
                 place.contact + '<br>' +
-                '<a href="' + directionsLink + '" target="_blank">Get Directions</a>'
+                '<a href="' + directionsLink + '" target="_blank" rel="noopener noreferrer">Get Directions</a>'
             );
 
             allPoints.push([place.lat, place.lng]);
@@ -557,6 +557,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (contactForm) {
         contactForm.addEventListener('submit', function (event) {
             event.preventDefault(); // stop the page from reloading
+
+            // Security: bots fill in the hidden "honeypot" field, real people never see it
+            if (document.getElementById('hpContact') && document.getElementById('hpContact').value !== '') {
+                return;
+            }
             clearFieldErrors(contactForm);
 
             var nameField = document.getElementById('contactName');
@@ -774,6 +779,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (volunteerForm) {
         volunteerForm.addEventListener('submit', function (event) {
             event.preventDefault();
+
+            // Security: hidden honeypot field (bots fill it in, people do not)
+            if (document.getElementById('hpVolunteer') && document.getElementById('hpVolunteer').value !== '') {
+                return;
+            }
             clearFieldErrors(volunteerForm);
 
             var fullNameField = document.getElementById('fullName');

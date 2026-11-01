@@ -77,6 +77,17 @@ The following changes were made after the Part 2 submission to respond to its fe
 
 ---
 
+## SEO, Page Speed and Security (Additional Requests)
+
+| Request | What was done |
+|---|---|
+| **robots.txt** | `robots.txt` in the project root allows all crawlers and points to the sitemap |
+| **sitemap.xml** | `sitemap.xml` lists all 5 pages with last-modified date, change frequency and priority, using the live GitHub Pages address |
+| **Page speed** | Hero image resized to 400, 800 and 1200px JPG versions; responsive `srcset` and `loading="lazy"` on photos; scripts loaded with `defer` so they do not block the page; `preconnect` to fonts, icons and the photo host; the hero photo is preloaded on the home page; `font-display: swap` for Google Fonts; one shared stylesheet and one shared script (cached across pages) |
+| **Security** | A Content Security Policy (meta tag) limits where scripts, styles, fonts, images and AJAX calls may come from; `referrer` policy; `rel="noopener noreferrer"` on links that open in a new tab; a hidden honeypot field on the contact and volunteer forms to catch spam bots; client-side validation of all input; user-typed text is shown with `textContent` instead of being injected as HTML; `mailto:` content is encoded with `encodeURIComponent`; HTTPS is provided by GitHub Pages; no passwords, payments or personal data are stored (the console plan is the only thing saved, in the visitor's own browser) |
+
+---
+
 ## Website Goals and Objectives
 
 **Centralise Information** – instead of having info scattered everywhere, everything lives in one place online
@@ -251,6 +262,7 @@ All pages are reachable from every other page via the main navigation menu and t
   - **Volunteer enquiry form** (`enquiry.html`): after a valid submission the page now shows a response about the chosen role (days/times), that volunteering costs nothing, and the days the volunteer said they are available
   - Removed the mouse-tilt effect on gallery photos (unnecessary complexity); the CSS image-zoom and Ken Burns animations remain
 - **28 October 2026** – Visual upgrade: replaced the placeholder photos with more fitting food-bank and volunteer photos from Pexels (gallery, page headers, featured image, spotlight background). Added a "Life at Haven" photo mosaic and a donate call-to-action band on the homepage, and a "How a Distribution Day Works" 3-step photo section on the Get Help page; the new cards use the same scroll animation. Photo credits added to References
+- **1 November 2026** – SEO, page speed and security update: refreshed `robots.txt` (with comments) and `sitemap.xml` (new last-modified dates); added a Content Security Policy, referrer policy, `noopener noreferrer` on external links and a hidden honeypot field on the contact and volunteer forms (checked in `js/main.js`); added `defer` on scripts, `preconnect` hints, a preloaded hero image and a theme colour on every page; fixed stray favicon text that had pushed the meta tags out of the page head
 - **31 October 2026** – Improvements:
   - **Donate pop-up** (section 13 of `js/main.js`, styles in `css/style.css` 27j): the pop-up is created with JavaScript (`createElement`, `innerHTML`, `appendChild`) so it works on every page without repeating HTML. The header and homepage Donate buttons open it (the link still goes to `contact.html` if JavaScript is off). Money tab: amount buttons from R50, custom amount with a R50 minimum, once-off or monthly. Food tab: food type list, quantity (whole number, 1-1000) and unit, several items in a removable list, drop-off location. Time tab: role, location, days and hours per week. All tabs validate name and email, send the data with `fetch()` and finish with a thank-you card and reference number. Escape, the close button and clicking the background close it
   - **Volunteer enrolment confirmation** (`enquiry.html`): replaced the short message with a "You have successfully enrolled as a Haven volunteer" card: reference number, date, role, available days, email, shifts from the console plan, next steps, and an "Enrol another volunteer" button
@@ -288,6 +300,8 @@ Photographs are free stock photos from Pexels (Pexels, n.d.), used under the Pex
 | services.html | Collect and Go Home | https://images.pexels.com/photos/6895226/pexels-photo-6895226.jpeg |
 
 ## References
+
+Referenced using the Harvard (Anglia) style. Sources are listed alphabetically. (n.d.) means no date is given on the web page.
 
 - CARTO (n.d.) *Basemaps*. Available at: https://carto.com/basemaps (Accessed: 1 November 2026).
 - Font Awesome (n.d.) *Font Awesome icons*. Available at: https://fontawesome.com/ (Accessed: 1 November 2026).

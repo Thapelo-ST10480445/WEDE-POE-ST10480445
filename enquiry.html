@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Security: Content Security Policy limits where scripts, styles and data can come from -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://jsonplaceholder.typicode.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#1F5D3A">
+    <!-- Page speed: open early connections to the services the page uses -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin>
     <meta name="description" content="Volunteer with Haven Community Food Bank. Sign up to make a difference in your community.">
     <meta name="keywords" content="volunteer, food bank, Cape Town, community, sign up, help">
     <meta name="author" content="Haven Community Food Bank">
@@ -239,6 +248,7 @@
 
                 <!-- Volunteer Form -->
                 <form id="volunteerForm" action="mailto:info@havenfoodbank.org" method="post" enctype="text/plain" novalidate>
+                    <div class="hp-field" aria-hidden="true"><label for="hpVolunteer">Leave this field empty</label><input type="text" id="hpVolunteer" name="website" tabindex="-1" autocomplete="off"></div>
 
                     <!-- Personal Information -->
                     <fieldset>
@@ -372,6 +382,6 @@
 
     <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
